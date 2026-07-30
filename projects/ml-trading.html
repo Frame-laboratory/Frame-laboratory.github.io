@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ML-Driven Trading Algorithm | FRAME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <span></span>
+    FRAME
+  </a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#teams">Teams</a></li>
+    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<section class="project-hero">
+  <div class="container">
+    <a class="back-link" href="../index.html#projects">← All Projects</a>
+    <p class="project-type">Trading System · 2026</p>
+    <h1>ML-Driven Trading Algorithm</h1>
+    <div class="project-tags">
+      <span class="project-tag">XGBoost</span>
+      <span class="project-tag">GBM</span>
+      <span class="project-tag">Multi-Market</span>
+      <span class="project-tag">Backtesting</span>
+      <span class="project-tag">Signal Generation</span>
+      <span class="project-tag">Portfolio Allocation</span>
+    </div>
+  </div>
+</section>
+
+<section class="project-body">
+  <div class="container">
+
+    <h2>Overview</h2>
+    <p>
+      This project develops a machine learning-based trading algorithm that invests across stock markets in multiple countries. Rather than relying on a single market or hand-crafted rules, we use gradient boosting models to learn predictive patterns from cross-sectional and time-series features and translate them into allocation decisions.
+    </p>
+    <p>
+      The core models are Gradient Boosting Machine (GBM) and XGBoost (XGB), chosen for their strong performance on tabular financial data, interpretability via feature importance, and robustness under noisy market conditions.
+    </p>
+
+    <dl class="project-meta-grid">
+      <div class="project-meta-item">
+        <dt>Models</dt>
+        <dd>GBM, XGBoost</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Scope</dt>
+        <dd>Multi-country equities</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Objective</dt>
+        <dd>Signal → allocation</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Status</dt>
+        <dd>In development</dd>
+      </div>
+    </dl>
+
+    <h2>Approach</h2>
+    <p>
+      The system is built as an end-to-end pipeline from raw market data to portfolio positions. Features are engineered from price, volume, and derived indicators across markets, then fed into GBM and XGB classifiers or regressors that output trade signals. These signals drive country- and ticker-level allocation within a unified framework.
+    </p>
+
+    <h3>1. Feature Engineering</h3>
+    <ul>
+      <li>Price-based features: returns, momentum, volatility, drawdown</li>
+      <li>Volume and liquidity proxies</li>
+      <li>Cross-market and cross-sectional rankings</li>
+      <li>Market-specific normalization to handle heterogeneous exchanges</li>
+    </ul>
+
+    <h3>2. Model Training</h3>
+    <ul>
+      <li><strong>GBM</strong>: sklearn-style gradient boosting as a baseline ensemble model</li>
+      <li><strong>XGBoost</strong>: optimized gradient boosting with regularization for generalization</li>
+      <li>Walk-forward and time-series-aware validation to reduce lookahead bias</li>
+      <li>Hyperparameter tuning per market regime where appropriate</li>
+    </ul>
+
+    <h3>3. Signal & Allocation</h3>
+    <ul>
+      <li>Model outputs converted to long/short or ranked signals per asset</li>
+      <li>Country-level exposure constraints to diversify across regions</li>
+      <li>Position sizing and risk limits applied before execution</li>
+    </ul>
+
+    <div class="project-callout">
+      <p>
+        <strong style="color: var(--text-primary);">Multi-market design.</strong>
+        The algorithm is designed to operate across multiple national stock markets, allowing the model to exploit both local patterns and global cross-market relationships rather than overfitting to a single exchange.
+      </p>
+    </div>
+
+    <h2>Backtesting</h2>
+    <p>
+      Strategies are evaluated through a backtesting framework that accounts for transaction costs, slippage, and realistic rebalancing schedules. Performance is tracked across markets individually and in aggregate to assess whether the GBM/XGB ensemble generalizes beyond any single country.
+    </p>
+
+    <h2>Status</h2>
+    <p>
+      This project is in active development. Code, documentation, and performance results will be added as the pipeline matures.
+    </p>
+
+    <h2>Resources</h2>
+    <div class="project-links">
+      <span class="project-link disabled">Code (TBD)</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 FRAME &nbsp;·&nbsp;
+    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
+  </p>
+</footer>
+
+</body>
+</html>

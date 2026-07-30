@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catching the Uncatchable | FRAME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="../index.html">
+    <span></span>
+    FRAME
+  </a>
+  <ul>
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../index.html#teams">Teams</a></li>
+    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<section class="project-hero">
+  <div class="container">
+    <a class="back-link" href="../index.html#projects">← All Projects</a>
+    <p class="project-type">Research Paper · 2026</p>
+    <h1>Catching the Uncatchable: Predicting Abrupt Market Movements</h1>
+    <div class="project-tags">
+      <span class="project-tag">Jump-Diffusion</span>
+      <span class="project-tag">GJD</span>
+      <span class="project-tag">Neural ODE</span>
+      <span class="project-tag">Neural Networks</span>
+      <span class="project-tag">Time Series Modeling</span>
+      <span class="project-tag">Surge Prediction</span>
+    </div>
+  </div>
+</section>
+
+<section class="project-body">
+  <div class="container">
+
+    <h2>Abstract</h2>
+    <p>
+      Abrupt price surges are rare but economically significant events that are difficult to forecast using conventional models. This work frames surge prediction as a binary classification problem and studies it from two complementary angles: a stochastic modeling perspective based on first-passage-time theory, and a neural approach built on Neural ODEs.
+    </p>
+    <p>
+      On the stochastic side, we introduce a generalized jump-diffusion (GJD) process with correlated jump components, relaxing the standard independence assumption in classical jump-diffusion models. On the neural side, we adapt NODE from trajectory reconstruction to classification and compare it against LSTM, CNN, and Transformer baselines. Experiments on KOSDAQ, IWM, and S&P 500 suggest that NODE consistently outperforms both deep learning baselines and SDE-based benchmarks for predicting sharp upward price movements in high-volatility settings.
+    </p>
+
+    <dl class="project-meta-grid">
+      <div class="project-meta-item">
+        <dt>Task</dt>
+        <dd>Binary surge classification</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Surge threshold</dt>
+        <dd>≥ 20% price increase</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Input window</dt>
+        <dd>30-day lookback</dd>
+      </div>
+      <div class="project-meta-item">
+        <dt>Markets</dt>
+        <dd>KOSDAQ, IWM, S&P 500</dd>
+      </div>
+    </dl>
+
+    <h2>Problem</h2>
+    <p>
+      Financial markets frequently experience sudden discontinuous price movements driven by macro shocks, liquidity events, or sector-wide sentiment shifts. These jumps are often correlated across assets within short time windows, yet most classical jump-diffusion formulations treat jump sizes as independent.
+    </p>
+    <p>
+      At the same time, purely parametric stochastic models may be too rigid for noisy real-world return series, while flexible neural sequence models can overfit spurious patterns. The central question is whether continuous-time neural dynamics can improve surge prediction without sacrificing the structure implied by financial time series.
+    </p>
+
+    <h2>Approach</h2>
+    <p>We pursue two parallel lines of work and compare them on the same prediction task.</p>
+
+    <h3>1. Generalized Jump-Diffusion (GJD)</h3>
+    <p>
+      Motivated by first-passage-time problems, we extend the classical Kou jump-diffusion framework by introducing correlation among jump components through a shared systematic factor. This GJD formulation is designed to capture the empirical observation that jumps occurring in close succession are often linked to common market-wide shocks.
+    </p>
+    <ul>
+      <li>Benchmark against Brownian motion, Ornstein-Uhlenbeck, and standard Kou JD</li>
+      <li>Analyze threshold-crossing behavior via first-passage-time distributions</li>
+      <li>Separate diffusion and jump components using a boundary adjustment (BA) rule on log-returns</li>
+    </ul>
+
+    <h3>2. NODE-Based Classifier</h3>
+    <p>
+      We adapt Neural ODEs to surge classification rather than trajectory reconstruction. The model uses an LSTM encoder to extract sequential features, passes them through a NODE refinement layer that evolves latent states in continuous time, and outputs a surge probability through a classification head.
+    </p>
+    <ul>
+      <li>Architecture: LSTM encoder → NODE layer → classification head</li>
+      <li>Trained with a classification objective (not reconstruction)</li>
+      <li>Solved with a Dormand-Prince ODE solver and adjoint sensitivity for efficient backpropagation</li>
+      <li>Compared against LSTM, CNN, and Transformer direct-prediction baselines</li>
+      <li>NODE-T variant included as a controlled comparison trained for trajectory reconstruction</li>
+    </ul>
+
+    <div class="project-callout">
+      <p>
+        <strong style="color: var(--text-primary);">Features.</strong>
+        All neural models use a 30-day window of four standardized inputs: price, volume, Sharpe ratio, and volatility. Models are pooled across tickers within each market during training.
+      </p>
+    </div>
+
+    <h2>Experimental Setup</h2>
+    <p>
+      We evaluate on three markets chosen for geographic and structural diversity:
+    </p>
+    <ul>
+      <li><strong>KOSDAQ</strong> (Korea Exchange, 2017 to 2024): a growth-oriented market with frequent sharp moves in individual names</li>
+      <li><strong>IWM</strong> (iShares Russell 2000 ETF, 2021 to 2026): a U.S. small-cap proxy for broader generalization testing</li>
+      <li><strong>S&P 500</strong> (2016 to 2024): a large-cap U.S. benchmark used in Appendix E for robustness across lower-noise environments</li>
+    </ul>
+    <p>
+      KOSDAQ and IWM serve as the primary high-volatility testbeds in the main analysis. S&P 500 is included to test whether conclusions transfer to a more stable market, and to compare performance across varying look-back windows and prediction horizons (Appendix E). Additional stochastic benchmarks (OU, GBM) and extended robustness tables are also reported in the appendix.
+    </p>
+    <p>
+      A positive label is assigned when the predicted surge probability exceeds a decision threshold of 0.5 and the realized forward price change reaches at least 20%. Stochastic models (JD and GJD) are calibrated separately per ticker, while neural models are trained in a pooled fashion across all tickers in each market.
+    </p>
+
+    <h2>Key Findings</h2>
+    <p>Preliminary results from the paper (placeholder summary):</p>
+    <ul>
+      <li>Neural network models consistently outperform classical stochastic benchmarks on high-volatility KOSDAQ and IWM</li>
+      <li>Among stochastic models, GJD improves over standard JD by allowing correlated jumps, but remains below neural performance in high-noise settings</li>
+      <li>NODE achieves the strongest overall results among all tested architectures on KOSDAQ and IWM, suggesting that continuous-time latent dynamics help suppress spurious features</li>
+      <li>IWM experiments largely confirm the patterns observed on KOSDAQ, with improved recall across neural models</li>
+      <li>On S&P 500 (Appendix E), the performance gap narrows: the lower-noise environment favors simpler models such as OU, while NODE remains competitive but less dominant than on small-cap datasets</li>
+    </ul>
+
+    <h2>Future Directions</h2>
+    <p>
+      Several extensions are natural next steps: hybrid neural-SDE models (e.g., neural SDEs) that combine parametric stochastic structure with flexible function approximation, cross-market transfer learning, and richer feature sets beyond the four baseline inputs. Figures and full result tables will be added to this page after publication.
+    </p>
+
+    <h2>Resources</h2>
+    <p>Paper, code, and supplementary materials coming soon.</p>
+    <div class="project-links">
+      <span class="project-link disabled">PDF (TBD)</span>
+      <span class="project-link disabled">arXiv (TBD)</span>
+      <span class="project-link disabled">Code (TBD)</span>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 FRAME &nbsp;·&nbsp;
+    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
+  </p>
+</footer>
+
+</body>
+</html>

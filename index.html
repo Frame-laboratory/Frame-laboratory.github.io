@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FRAME</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <span></span>
+    FRAME
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#teams">Teams</a></li>
+    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-label">Research Team</div>
+  <h1>FRAME</h1>
+  <p class="hero-acronym">
+    Financial Research in AI, Mathematics, and Economics
+  </p>
+  <p class="hero-sub">
+    A research team at the intersection of machine learning, stochastic modeling, and quantitative finance, building tools to understand and navigate financial markets.
+  </p>
+  <div class="btn-group">
+    <a class="btn btn-primary" href="#about">About Us</a>
+    <a class="btn btn-outline" href="#projects">View Projects</a>
+    <a class="btn btn-outline" href="#teams">Teams</a>
+    <a class="btn btn-outline" href="https://github.com/Frame-laboratory" target="_blank">GitHub</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="section-title">About</p>
+    <div class="section-divider"></div>
+    <div class="about-content">
+      <p class="about-text">
+        <strong>FRAME</strong> (Financial Research in AI, Mathematics, and Economics) is a research team with previous and current affiliations to the University of Illinois Urbana-Champaign. We combine stochastic modeling and machine learning to study non-stationarity, low signal-to-noise ratios, and the prediction of rare but high-impact market events.
+      </p>
+      <p class="about-text">
+        Our work spans theoretical research, such as extending jump-diffusion frameworks and developing continuous-time neural architectures, and applied systems, including ML-driven trading algorithms built end-to-end from data to execution. We believe rigorous modeling and practical engineering go hand in hand.
+      </p>
+      <div style="margin-top: 1.8rem;">
+        <a class="btn btn-primary" href="https://github.com/Frame-laboratory" target="_blank" style="text-decoration:none; font-size:.85rem;">View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-title">Projects</p>
+    <p class="section-subtitle">Our ongoing and upcoming research at the intersection of ML and quantitative finance.</p>
+    <div class="section-divider"></div>
+
+    <div class="projects-grid">
+
+      <a href="projects/catching-the-uncatchable.html" class="project-card">
+        <div class="project-header">
+          <h3>Catching the Uncatchable: Predicting Abrupt Market Movements</h3>
+        </div>
+        <p class="project-type">Research Paper · 2026</p>
+        <p class="project-desc">
+          Correlated jump-diffusion (GJD) and Neural ODE models for binary surge classification on KOSDAQ, IWM, and S&P 500, benchmarked against LSTM, CNN, and Transformer baselines.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">Jump-Diffusion</span>
+          <span class="project-tag">Neural ODE</span>
+          <span class="project-tag">Neural Networks</span>
+          <span class="project-tag">Time Series Modeling</span>
+        </div>
+        <span class="project-cta">View project →</span>
+      </a>
+
+      <a href="projects/ml-trading.html" class="project-card">
+        <div class="project-header">
+          <h3>ML-Driven Trading Algorithm</h3>
+        </div>
+        <p class="project-type">Trading System · 2026</p>
+        <p class="project-desc">
+          A multi-market equity strategy using GBM and XGBoost to generate signals and allocate across stock markets in multiple countries.
+        </p>
+        <div class="project-tags">
+          <span class="project-tag">XGBoost</span>
+          <span class="project-tag">GBM</span>
+          <span class="project-tag">Multi-Market</span>
+          <span class="project-tag">Backtesting</span>
+        </div>
+        <span class="project-cta">View project →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="teams">
+  <div class="container">
+    <p class="section-title">Teams</p>
+    <p class="section-subtitle">Meet the team behind FRAME. Click a profile to learn more.</p>
+    <div class="section-divider"></div>
+    <div class="team-grid">
+
+      <a href="researchers/jinu-jeong.html" class="member-card">
+        <div class="member-avatar">JJ</div>
+        <h4>Jinu Jeong</h4>
+        <div class="member-role">ML Researcher</div>
+        <span class="member-cta">View profile →</span>
+      </a>
+
+      <a href="researchers/wonwoo-kang.html" class="member-card">
+        <div class="member-avatar">WK</div>
+        <h4>Wonwoo Kang</h4>
+        <div class="member-role">Math Researcher</div>
+        <span class="member-cta">View profile →</span>
+      </a>
+
+      <a href="researchers/seongyoon-kim.html" class="member-card">
+        <div class="member-avatar">SK</div>
+        <h4>Seongyoon Kim</h4>
+        <div class="member-role">Research Lead</div>
+        <span class="member-cta">View profile →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 FRAME &nbsp;·&nbsp;
+    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
+  </p>
+</footer>
+
+</body>
+</html>
