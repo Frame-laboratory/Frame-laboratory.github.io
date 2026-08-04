@@ -32,7 +32,7 @@
     <div class="project-tags">
       <span class="project-tag">XGBoost</span>
       <span class="project-tag">GBM</span>
-      <span class="project-tag">Multi-Market</span>
+      <span class="project-tag">AU · TW · UK · US</span>
       <span class="project-tag">Backtesting</span>
       <span class="project-tag">Signal Generation</span>
       <span class="project-tag">Portfolio Allocation</span>
@@ -45,10 +45,10 @@
 
     <h2>Overview</h2>
     <p>
-      This project develops a machine learning-based trading algorithm that invests across stock markets in multiple countries. Rather than relying on a single market or hand-crafted rules, we use gradient boosting models to learn predictive patterns from cross-sectional and time-series features and translate them into allocation decisions.
+      This project is a long-only equity trading system spanning four markets — <strong>Australia (AU)</strong>, <strong>Taiwan (TW)</strong>, <strong>United Kingdom (UK)</strong>, and <strong>United States (US)</strong> — on Interactive Brokers 1-day bars. Two signal engines — a closed-form GBM first-passage model and a trained XGBoost classifier — score the cross-section daily; a slot-based portfolio simulator turns those scores into trades with explicit entry, exit, and cost rules.
     </p>
     <p>
-      The core models are Gradient Boosting Machine (GBM) and XGBoost (XGB), chosen for their strong performance on tabular financial data, interpretability via feature importance, and robustness under noisy market conditions.
+      Results below are produced on the <strong>test split</strong> across all four markets. The focus is on whether model scores translate into tradable edge under realistic position limits, barrier exits, and transaction costs — not just offline classification accuracy.
     </p>
 
     <dl class="project-meta-grid">
@@ -57,65 +57,144 @@
         <dd>GBM, XGBoost</dd>
       </div>
       <div class="project-meta-item">
-        <dt>Scope</dt>
-        <dd>Multi-country equities</dd>
+        <dt>Markets</dt>
+        <dd>AU, TW, UK, US</dd>
       </div>
       <div class="project-meta-item">
-        <dt>Objective</dt>
-        <dd>Signal → allocation</dd>
+        <dt>Data</dt>
+        <dd>IB 1d OHLCV</dd>
       </div>
       <div class="project-meta-item">
         <dt>Status</dt>
-        <dd>In development</dd>
+        <dd>Ongoing</dd>
       </div>
     </dl>
 
-    <h2>Approach</h2>
+    <h2>Trading &amp; Backtest Setup</h2>
     <p>
-      The system is built as an end-to-end pipeline from raw market data to portfolio positions. Features are engineered from price, volume, and derived indicators across markets, then fed into GBM and XGB classifiers or regressors that output trade signals. These signals drive country- and ticker-level allocation within a unified framework.
+      Backtests use a <strong>slot-based</strong> long-only portfolio with no periodic rebalancing. Positions exit on take-profit, stop-loss, or max-hold; freed slots are refilled the same day from the highest-scoring names still available. Cash from closed positions is pooled and split equally across open slots.
     </p>
 
-    <h3>1. Feature Engineering</h3>
+    <h3>Portfolio rules</h3>
     <ul>
-      <li>Price-based features: returns, momentum, volatility, drawdown</li>
-      <li>Volume and liquidity proxies</li>
-      <li>Cross-market and cross-sectional rankings</li>
-      <li>Market-specific normalization to handle heterogeneous exchanges</li>
+      <li><strong>Concurrent slots (K)</strong> — up to 10 positions at once</li>
+      <li><strong>Allocation</strong> — equal cash per open slot: <code>cash / n_open_slots</code>; unused slot budget stays in cash</li>
+      <li><strong>Rebalancing</strong> — none; only intraday slot turnover after exits</li>
+      <li><strong>Entry filter</strong> — score ≥ 0.5 (<code>MIN_ENTRY_SCORE</code>); lower scores are never bought</li>
+      <li><strong>Selection</strong> — highest score first within the active score bucket; already-held names excluded</li>
+      <li><strong>Idle cash</strong> — compounds at 2% annual risk-free rate</li>
     </ul>
 
-    <h3>2. Model Training</h3>
+    <h3>Signal → entry</h3>
     <ul>
-      <li><strong>GBM</strong>: sklearn-style gradient boosting as a baseline ensemble model</li>
-      <li><strong>XGBoost</strong>: optimized gradient boosting with regularization for generalization</li>
-      <li>Walk-forward and time-series-aware validation to reduce lookahead bias</li>
-      <li>Hyperparameter tuning per market regime where appropriate</li>
+      <li><strong>Signal time</strong> — end of day D, using closes up to and including D</li>
+      <li><strong>Entry price</strong> — close of day D (slot mode)</li>
+      <li><strong>Universe</strong> — IB 1d panels for AU, TW, UK, US</li>
     </ul>
 
-    <h3>3. Signal & Allocation</h3>
+    <h3>Exit rules</h3>
     <ul>
-      <li>Model outputs converted to long/short or ranked signals per asset</li>
-      <li>Country-level exposure constraints to diversify across regions</li>
-      <li>Position sizing and risk limits applied before execution</li>
+      <li><strong>Max hold (H)</strong> — 20 trading days; exit at close if still open</li>
+      <li><strong>Take-profit</strong> — +TP from entry; triggered on the day's <strong>high</strong></li>
+      <li><strong>Stop-loss</strong> — −SL from entry; triggered on the day's <strong>low</strong>; default <strong>SL = TP × 0.5</strong></li>
+      <li><strong>Same-day TP + SL</strong> — stop-loss assumed first (conservative long)</li>
+      <li><strong>Gap through open</strong> — if the open gaps past TP or SL, fill at the open price</li>
+      <li><strong>TP sweep</strong> — 5% through 20% in backtest heatmaps</li>
     </ul>
 
-    <div class="project-callout">
-      <p>
-        <strong style="color: var(--text-primary);">Multi-market design.</strong>
-        The algorithm is designed to operate across multiple national stock markets, allowing the model to exploit both local patterns and global cross-market relationships rather than overfitting to a single exchange.
-      </p>
+    <h3>Transaction costs &amp; liquidity</h3>
+    <ul>
+      <li><strong>Spread</strong> — 2 bps full bid-ask; half-spread charged on each side</li>
+      <li><strong>Commission</strong> — buy 0%; sell 0.003%</li>
+      <li><strong>Market impact</strong> — <code>0.02 × √(trade_notional / dollar_volume)</code>, capped at 0.5%</li>
+      <li><strong>Missing volume</strong> — impact charged at the cap (conservative)</li>
+    </ul>
+
+    <h3>Evaluation sweep</h3>
+    <p>
+      Heatmaps sweep <strong>score buckets</strong> (0.0–0.1, 0.1–0.2, …, 0.9–1.0) against <strong>TP levels</strong> (5%–20%). Each cell is a sub-strategy that only buys names whose score falls in that bucket — not a single blended portfolio. Sharpe ratios are aggregated across AU, TW, UK, and US on the test split.
+    </p>
+
+    <h2>Models</h2>
+    <p>
+      Both engines target the same economic event: a +TP barrier touch within the 20-day holding window. The difference is how the probability is estimated.
+    </p>
+
+    <h3>GBM (first-passage)</h3>
+    <p>
+      From a 30-day trailing window of log-returns, estimate drift <code>ν</code> and volatility <code>σ</code>. Model log-price as Brownian motion and score each name with the closed-form probability of touching <code>ln(1 + TP)</code> within H = 20 days. No training or checkpoint — the signal definition matches the barrier-exit rule directly.
+    </p>
+
+    <h3>XGBoost (surge classifier)</h3>
+    <p>
+      Train a gradient-boosted classifier on rolling window tensors (<code>window_data</code>) to predict P(+TP surge within H = 20). Scores are aligned back to the cross-sectional panel for slot allocation. Checkpoints are reused when available; otherwise the model trains from <code>window_data</code> on first run.
+    </p>
+
+    <h2>Data Pipeline</h2>
+    <p>
+      The repo ships seed data (~200 MB). A one-time preprocessing step builds the full evaluation set (~9 GB): <strong>whole_data + raw_data</strong> → <strong>panel_data</strong> (GBM signals, backtests) and <strong>window_data</strong> (XGB training). Setup commands will be documented in the project repository README once published.
+    </p>
+
+    <h2>Signal Accuracy</h2>
+    <p>
+      First step: for each score threshold and TP level, measure how often a signal correctly predicts a take-profit hit within h = 20 days. This checks whether model scores rank names by surge likelihood before layering on slot constraints and costs.
+    </p>
+
+    <div class="project-figures">
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/gbm_signal_accuracy.png" alt="GBM signal accuracy heatmap across score thresholds and take-profit levels" loading="lazy" />
+        <figcaption>GBM — signal hit rate vs. score bin and TP (test split, h = 20).</figcaption>
+      </figure>
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/xgb_signal_accuracy.png" alt="XGBoost signal accuracy heatmap across score thresholds and take-profit levels" loading="lazy" />
+        <figcaption>XGBoost — signal hit rate vs. score bin and TP (test split, h = 20).</figcaption>
+      </figure>
     </div>
 
-    <h2>Backtesting</h2>
+    <h2>Backtest Results</h2>
     <p>
-      Strategies are evaluated through a backtesting framework that accounts for transaction costs, slippage, and realistic rebalancing schedules. Performance is tracked across markets individually and in aggregate to assess whether the GBM/XGB ensemble generalizes beyond any single country.
+      With signal quality established, portfolio simulations under the slot-based setup (K = 10, H = 20, SL = TP × 0.5, test split). Heatmaps sweep score buckets and TP levels; metrics below are aggregated across AU, TW, UK, and US.
     </p>
+
+    <h3>Sharpe ratio</h3>
+    <p>
+      Risk-adjusted return across score buckets and TP levels. Higher score bins isolate stronger signals; the TP axis shows sensitivity to the exit barrier.
+    </p>
+
+    <div class="project-figures">
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/gbm_sharpe.png" alt="GBM backtest Sharpe ratio heatmap across score bins and take-profit levels for AU, TW, UK, and US test split" loading="lazy" />
+        <figcaption>GBM — test-split Sharpe ratio (10 slots, TP 5%–20%, SL = TP × 0.5).</figcaption>
+      </figure>
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/xgb_sharpe.png" alt="XGBoost backtest Sharpe ratio heatmap across score bins and take-profit levels for AU, TW, UK, and US test split" loading="lazy" />
+        <figcaption>XGBoost — test-split Sharpe ratio (10 slots, TP 5%–20%, SL = TP × 0.5).</figcaption>
+      </figure>
+    </div>
+
+    <h3>Win rate</h3>
+    <p>
+      Fraction of closed trades with positive gross return under the same slot backtest. Win rate and Sharpe can diverge when payoff sizes differ across TP levels or score buckets.
+    </p>
+
+    <div class="project-figures">
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/gbm_winrate.png" alt="GBM backtest win rate heatmap across score bins and take-profit levels for AU, TW, UK, and US test split" loading="lazy" />
+        <figcaption>GBM — test-split win rate (10 slots, TP 5%–20%, SL = TP × 0.5).</figcaption>
+      </figure>
+      <figure class="project-figure">
+        <img src="../assets/projects/ml-trading/xgb_winrate.png" alt="XGBoost backtest win rate heatmap across score bins and take-profit levels for AU, TW, UK, and US test split" loading="lazy" />
+        <figcaption>XGBoost — test-split win rate (10 slots, TP 5%–20%, SL = TP × 0.5).</figcaption>
+      </figure>
+    </div>
 
     <h2>Status</h2>
     <p>
-      This project is in active development. Code, documentation, and performance results will be added as the pipeline matures.
+      Ongoing. The trading loop — signal generation, slot backtest, and signal-accuracy analysis — runs across all four markets. Future work includes feature refinement, additional universes, and live-paper integration.
     </p>
 
     <h2>Resources</h2>
+    <p>Code repository link pending — repository URL will be updated before publication.</p>
     <div class="project-links">
       <span class="project-link disabled">Code (TBD)</span>
     </div>

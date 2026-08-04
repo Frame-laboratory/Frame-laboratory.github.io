@@ -428,6 +428,30 @@ section { padding: var(--section-y) var(--section-x); }
   padding: .1rem .35rem;
   border-radius: 2px;
 }
+.project-figures {
+  display: grid;
+  gap: 1.4rem;
+  margin: 1.2rem 0 1.6rem;
+}
+.project-figure {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow: hidden;
+}
+.project-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+.project-figure figcaption {
+  margin-top: .75rem;
+  font-size: .82rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
 
 /* ── Teams ── */
 #teams { background: var(--bg-primary); }
