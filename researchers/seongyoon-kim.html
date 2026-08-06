@@ -2,71 +2,985 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Research profile of Seongyoon Kim, Ph.D. candidate in Mathematics at the University of Illinois Urbana-Champaign and Research Lead at FRAME."
+  />
+
   <title>Seongyoon Kim | FRAME</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="../css/style.css" />
+
+  <!-- Page-specific styling -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .researcher-hero {
+      padding-bottom: 3.5rem;
+    }
+
+    .researcher-hero-main {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .researcher-hero-info h1 {
+      margin-bottom: 0.35rem;
+    }
+
+    .researcher-tagline {
+      max-width: 760px;
+      margin-top: 1rem;
+      color: var(--text-secondary, #666);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .profile-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 2rem;
+    }
+
+    .profile-navigation a {
+      display: inline-block;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 999px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .profile-navigation a:hover {
+      border-color: currentColor;
+      transform: translateY(-1px);
+    }
+
+    .profile-section {
+      padding: 3.75rem 0;
+      scroll-margin-top: 5rem;
+    }
+
+    .profile-section + .profile-section {
+      border-top: 1px solid rgba(127, 127, 127, 0.16);
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary, #777);
+    }
+
+    .section-introduction {
+      max-width: 780px;
+      color: var(--text-secondary, #666);
+      line-height: 1.75;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .profile-card {
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+      background: rgba(127, 127, 127, 0.025);
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.65;
+    }
+
+    .profile-card-meta {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .education-list,
+    .experience-list,
+    .publication-list,
+    .honors-list {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .timeline-item:first-child {
+      padding-top: 0;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .timeline-institution {
+      margin-bottom: 0.7rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.95rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.7;
+    }
+
+    .timeline-content ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--text-secondary, #666);
+    }
+
+    .timeline-content li {
+      margin-bottom: 0.45rem;
+      line-height: 1.6;
+    }
+
+    .publication-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+    }
+
+    .publication-number {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .publication-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .publication-authors {
+      margin: 0 0 0.45rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .publication-status {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      font-weight: 500;
+    }
+
+    .publication-description {
+      margin-top: 0.8rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .tag-group {
+      margin-bottom: 2rem;
+    }
+
+    .tag-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-group h3 {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .profile-tag {
+      display: inline-block;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(127, 127, 127, 0.22);
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+    }
+
+    .honor-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .honor-item:first-child {
+      padding-top: 0;
+    }
+
+    .honor-item:last-child {
+      border-bottom: none;
+    }
+
+    .honor-item h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    .honor-meta {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 8px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .profile-link:hover {
+      border-color: currentColor;
+      transform: translateY(-2px);
+    }
+
+    .profile-link.disabled {
+      cursor: default;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    @media (max-width: 760px) {
+      .researcher-hero-main {
+        align-items: flex-start;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .publication-item {
+        grid-template-columns: 1fr;
+      }
+
+      .publication-number {
+        margin-bottom: -0.4rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .researcher-hero-main {
+        flex-direction: column;
+      }
+
+      .profile-navigation {
+        gap: 0.5rem;
+      }
+
+      .profile-navigation a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.72rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-brand" href="../index.html">
-    <span></span>
-    FRAME
-  </a>
-  <ul>
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#projects">Projects</a></li>
-    <li><a href="../index.html#teams">Teams</a></li>
-    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
-  </ul>
-</nav>
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-brand" href="../index.html">
+      <span></span>
+      FRAME
+    </a>
 
-<section class="researcher-hero">
-  <div class="container">
-    <a class="back-link" href="../index.html#teams">← Teams</a>
-    <div class="researcher-hero-main">
-      <div class="member-avatar">SK</div>
-      <div class="researcher-hero-info">
-        <h1>Seongyoon Kim</h1>
-        <div class="member-role">Research Lead</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="project-body">
-  <div class="container">
-
-    <h2>About</h2>
-    <p>
-      Research lead at FRAME, coordinating projects across machine learning, mathematics, and quantitative finance. Bio coming soon.
-    </p>
-
-    <h2>Research Interests</h2>
     <ul>
-      <li>Quantitative finance and market modeling</li>
-      <li>Cross-disciplinary research coordination</li>
-      <li>Applied ML systems for trading and risk</li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#teams">Teams</a></li>
+      <li>
+        <a
+          href="https://github.com/Frame-laboratory"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </li>
     </ul>
+  </nav>
 
-    <h2>Links</h2>
-    <div class="project-links">
-      <span class="project-link disabled">CV (TBD)</span>
-      <span class="project-link disabled">GitHub (TBD)</span>
-      <span class="project-link disabled">Website (TBD)</span>
+
+  <!-- Researcher hero -->
+  <section class="researcher-hero">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#teams">
+        ← Teams
+      </a>
+
+      <div class="researcher-hero-main">
+        <div class="member-avatar">SK</div>
+
+        <div class="researcher-hero-info">
+          <h1>Seongyoon Kim</h1>
+
+          <div class="member-role">
+            Research Lead · Ph.D. Candidate in Mathematics
+          </div>
+
+          <p class="researcher-tagline">
+            Researcher working at the intersection of actuarial science,
+            insurance economics, quantitative finance, stochastic modeling,
+            optimization, and machine learning.
+          </p>
+        </div>
+      </div>
+
+      <div class="profile-navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Papers</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#honors">Honors</a>
+        <a href="#links">Links</a>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
 
-<footer>
-  <p>© 2025 FRAME &nbsp;·&nbsp;
-    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
-  </p>
-</footer>
+  <!-- Main profile -->
+  <main class="project-body">
+    <div class="container">
+
+      <!-- About -->
+      <section class="profile-section" id="about">
+        <div class="section-heading">
+          <span class="section-label">01 · Profile</span>
+          <h2>About</h2>
+        </div>
+
+        <p class="section-introduction">
+          I am a Ph.D. candidate in Mathematics at the University of Illinois
+          Urbana-Champaign, specializing in actuarial science and risk analytics.
+          My research combines mathematical modeling, economic reasoning, and
+          computational methods to study problems in risk sharing, insurance,
+          financial markets, and data-driven prediction.
+        </p>
+
+        <p class="section-introduction">
+          At FRAME, I serve as Research Lead and coordinate interdisciplinary
+          projects involving machine learning, quantitative finance, mathematical
+          modeling, and systematic research. I am particularly interested in
+          developing models that are mathematically rigorous, computationally
+          practical, and economically meaningful.
+        </p>
+      </section>
+
+
+      <!-- Education -->
+      <section class="profile-section" id="education">
+        <div class="section-heading">
+          <span class="section-label">02 · Background</span>
+          <h2>Education</h2>
+        </div>
+
+        <div class="education-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2022–2027</div>
+
+            <div class="timeline-content">
+              <h3>Ph.D. in Mathematics</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <p>
+                Concentration in Actuarial Science and Risk Analytics.
+                Expected completion in 2027.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2019–2021</div>
+
+            <div class="timeline-content">
+              <h3>M.S. in Mathematics</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2015–2019</div>
+
+            <div class="timeline-content">
+              <h3>B.S. in Economics</h3>
+
+              <div class="timeline-institution">
+                Sungkyunkwan University
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2016–2018</div>
+
+            <div class="timeline-content">
+              <h3>B.S. in Economics and Business Economics</h3>
+
+              <div class="timeline-institution">
+                Erasmus University Rotterdam
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- Research interests -->
+      <section class="profile-section" id="research">
+        <div class="section-heading">
+          <span class="section-label">03 · Research</span>
+          <h2>Research Interests</h2>
+
+          <p class="section-introduction">
+            My research interests span mathematical risk modeling, insurance,
+            financial prediction, and computational methods.
+          </p>
+        </div>
+
+        <div class="profile-grid">
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Insurance and Risk</span>
+            <h3>Risk Sharing and Risk Pooling</h3>
+            <p>
+              Equilibrium, welfare, stability, participation incentives,
+              pricing, and reinsurance in heterogeneous insurance systems.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Applied Probability</span>
+            <h3>Stochastic Modeling</h3>
+            <p>
+              Stochastic processes, first-passage events, dynamic risk
+              allocation, and multi-period models under uncertainty.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Financial Markets</span>
+            <h3>Quantitative Finance</h3>
+            <p>
+              Financial time series, asset-price dynamics, market-event
+              prediction, systematic signals, and risk-aware decision making.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Machine Learning</span>
+            <h3>Rare-Event Prediction</h3>
+            <p>
+              Neural ODEs, sequence models, gradient-boosted trees, and
+              classification methods for low-signal and imbalanced data.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Optimization</span>
+            <h3>Allocation and Mechanism Design</h3>
+            <p>
+              Optimization, constrained allocation, auction mechanisms,
+              pricing design, and strategic participation.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Interdisciplinary Research</span>
+            <h3>Mathematics, Economics, and Data</h3>
+            <p>
+              Combining rigorous mathematical analysis with economic
+              interpretation, empirical validation, and computational modeling.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- Selected papers -->
+      <section class="profile-section" id="publications">
+        <div class="section-heading">
+          <span class="section-label">04 · Publications</span>
+          <h2>Selected Papers</h2>
+        </div>
+
+        <div class="publication-list">
+
+          <article class="publication-item">
+            <div class="publication-number">01</div>
+
+            <div class="publication-content">
+              <h3>Predicting Price Surges with Neural ODE</h3>
+
+              <p class="publication-authors">
+                Seongyoon Kim and collaborators
+              </p>
+
+              <span class="publication-status">
+                Manuscript under review
+              </span>
+
+              <p class="publication-description">
+                Develops a Neural ODE-based framework for predicting whether
+                asset prices cross a substantial return threshold within a
+                fixed horizon under low signal-to-noise and rare-event settings.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">02</div>
+
+            <div class="publication-content">
+              <h3>On the Expansion of Risk Pooling</h3>
+
+              <p class="publication-authors">
+                Joint work with Runhuan Feng and Michalis Anthropelos
+              </p>
+
+              <span class="publication-status">
+                Management Science
+              </span>
+
+              <p class="publication-description">
+                Studies when expanding a heterogeneous risk pool improves
+                participants' welfare and remains stable, with particular
+                attention to risk-adjusted pricing, participation incentives,
+                and reinsurance.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">03</div>
+
+            <div class="publication-content">
+              <h3>Tokenization of Distributed Insurance by Auction</h3>
+
+              <p class="publication-authors">
+                Joint work with Runhuan Feng and Amichai Painsky
+              </p>
+
+              <span class="publication-status">
+                Japanese Journal of Statistics and Data Science
+              </span>
+
+              <p class="publication-description">
+                Proposes an auction-based mechanism for allocating tokenized
+                insurance risks and analyzes investor allocation, bidding,
+                portfolio construction, and the effects of splitting and
+                merging bids.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- Experience -->
+      <section class="profile-section" id="experience">
+        <div class="section-heading">
+          <span class="section-label">05 · Experience</span>
+          <h2>Research and Teaching Experience</h2>
+        </div>
+
+        <div class="experience-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">Present</div>
+
+            <div class="timeline-content">
+              <h3>Research Lead</h3>
+
+              <div class="timeline-institution">
+                FRAME
+              </div>
+
+              <ul>
+                <li>
+                  Coordinate interdisciplinary projects in quantitative
+                  finance, mathematical modeling, and machine learning.
+                </li>
+
+                <li>
+                  Develop research directions, evaluate modeling approaches,
+                  and organize collaborative research workflows.
+                </li>
+
+                <li>
+                  Support projects involving financial prediction, systematic
+                  trading research, and risk modeling.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2022–2023</div>
+
+            <div class="timeline-content">
+              <h3>Graduate Research Assistant</h3>
+
+              <div class="timeline-institution">
+                Department of Mathematics,
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <ul>
+                <li>
+                  Conducted research in risk sharing, risk pooling, insurance
+                  pricing, welfare analysis, and uncertainty management.
+                </li>
+
+                <li>
+                  Developed mathematical models and derived theoretical
+                  conditions for welfare improvement and pool stability.
+                </li>
+
+                <li>
+                  Contributed to research published in
+                  <em>Management Science</em>.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2020–2024</div>
+
+            <div class="timeline-content">
+              <h3>Graduate Teaching Assistant</h3>
+
+              <div class="timeline-institution">
+                Department of Mathematics,
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <ul>
+                <li>
+                  Supported courses in probability, stochastic processes,
+                  machine learning, calculus, and linear algebra.
+                </li>
+
+                <li>
+                  Served as a discussion instructor, grader, course-material
+                  assistant, and lead teaching assistant.
+                </li>
+
+                <li>
+                  Guided students through theoretical concepts, computational
+                  exercises, and problem-solving methods.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- Skills -->
+      <section class="profile-section" id="skills">
+        <div class="section-heading">
+          <span class="section-label">06 · Capabilities</span>
+          <h2>Skills</h2>
+        </div>
+
+        <div class="tag-group">
+          <h3>Programming and Data</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Python</span>
+            <span class="profile-tag">NumPy</span>
+            <span class="profile-tag">pandas</span>
+            <span class="profile-tag">PyTorch</span>
+            <span class="profile-tag">scikit-learn</span>
+            <span class="profile-tag">SQL</span>
+            <span class="profile-tag">Git</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Quantitative Methods</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Stochastic Processes</span>
+            <span class="profile-tag">Applied Probability</span>
+            <span class="profile-tag">Optimization</span>
+            <span class="profile-tag">Financial Time Series</span>
+            <span class="profile-tag">Risk Measures</span>
+            <span class="profile-tag">First-Passage Models</span>
+            <span class="profile-tag">Mechanism Design</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Machine Learning</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Neural ODEs</span>
+            <span class="profile-tag">LSTM</span>
+            <span class="profile-tag">Transformers</span>
+            <span class="profile-tag">XGBoost</span>
+            <span class="profile-tag">Rare-Event Prediction</span>
+            <span class="profile-tag">Imbalanced Classification</span>
+            <span class="profile-tag">Feature Engineering</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Research Tools</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">LaTeX</span>
+            <span class="profile-tag">Overleaf</span>
+            <span class="profile-tag">Mathematical Modeling</span>
+            <span class="profile-tag">Academic Writing</span>
+            <span class="profile-tag">Research Presentation</span>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Honors and presentations -->
+      <section class="profile-section" id="honors">
+        <div class="section-heading">
+          <span class="section-label">07 · Recognition</span>
+          <h2>Honors and Presentations</h2>
+        </div>
+
+        <div class="honors-list">
+
+          <article class="honor-item">
+            <h3>PARM Research Fellow</h3>
+
+            <p class="honor-meta">
+              University of Illinois Urbana-Champaign · 2024
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>
+              International Conference on Insurance and Actuarial Science
+            </h3>
+
+            <p class="honor-meta">
+              Research presentation · Nankai University, Tianjin · 2024
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>INFORMS Annual Meeting</h3>
+
+            <p class="honor-meta">
+              Research presentation · Indianapolis, Indiana · 2022
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+
+      <!-- Links -->
+      <section class="profile-section" id="links">
+        <div class="section-heading">
+          <span class="section-label">08 · Contact</span>
+          <h2>Links</h2>
+
+          <p class="section-introduction">
+            Research profiles, code, and professional materials.
+          </p>
+        </div>
+
+        <div class="profile-links">
+
+          <!--
+            Add your CV PDF to:
+            assets/Seongyoon_Kim_CV.pdf
+
+            Then make sure the relative path below is correct.
+          -->
+          <a
+            class="profile-link"
+            href="../assets/Seongyoon_Kim_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="https://github.com/sykim6397-dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="mailto:s.y.kim6397@gmail.com"
+          >
+            Email ↗
+          </a>
+
+          <!-- Replace # with your Google Scholar URL -->
+          <a
+            class="profile-link disabled"
+            href="#"
+            aria-disabled="true"
+          >
+            Google Scholar
+          </a>
+
+          <!-- Replace # with your LinkedIn URL -->
+          <a
+            class="profile-link disabled"
+            href="#"
+            aria-disabled="true"
+          >
+            LinkedIn
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      © 2026 FRAME &nbsp;·&nbsp;
+
+      <a
+        href="https://github.com/Frame-laboratory"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github.com/Frame-laboratory
+      </a>
+    </p>
+  </footer>
 
 </body>
 </html>
