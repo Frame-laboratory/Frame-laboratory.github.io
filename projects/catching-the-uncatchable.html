@@ -2,155 +2,560 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Catching the Uncatchable | FRAME</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Predicting Price Surges with Neural ODE: a classification-oriented framework for rare-event prediction in noisy financial time series."
+  />
+
+  <title>Predicting Price Surges with Neural ODE | FRAME</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="/Users/seongyoon/Downloads/css/style.css" />
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-brand" href="../index.html">
-    <span></span>
-    FRAME
-  </a>
-  <ul>
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#projects">Projects</a></li>
-    <li><a href="../index.html#teams">Teams</a></li>
-    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
-  </ul>
-</nav>
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-brand" href="../index.html">
+      <span></span>
+      FRAME
+    </a>
 
-<section class="project-hero">
-  <div class="container">
-    <a class="back-link" href="../index.html#projects">← All Projects</a>
-    <p class="project-type">Research Paper · 2026</p>
-    <h1>Catching the Uncatchable: Predicting Abrupt Market Movements</h1>
-    <div class="project-tags">
-      <span class="project-tag">Jump-Diffusion</span>
-      <span class="project-tag">GJD</span>
-      <span class="project-tag">Neural ODE</span>
-      <span class="project-tag">Neural Networks</span>
-      <span class="project-tag">Time Series Modeling</span>
-      <span class="project-tag">Surge Prediction</span>
-    </div>
-  </div>
-</section>
-
-<section class="project-body">
-  <div class="container">
-
-    <h2>Abstract</h2>
-    <p>
-      Abrupt price surges are rare but economically significant events that are difficult to forecast using conventional models. This work frames surge prediction as a binary classification problem and studies it from two complementary angles: a stochastic modeling perspective based on first-passage-time theory, and a neural approach built on Neural ODEs.
-    </p>
-    <p>
-      On the stochastic side, we introduce a generalized jump-diffusion (GJD) process with correlated jump components, relaxing the standard independence assumption in classical jump-diffusion models. On the neural side, we adapt NODE from trajectory reconstruction to classification and compare it against LSTM, CNN, and Transformer baselines. Experiments on KOSDAQ, IWM, and S&P 500 suggest that NODE consistently outperforms both deep learning baselines and SDE-based benchmarks for predicting sharp upward price movements in high-volatility settings.
-    </p>
-
-    <dl class="project-meta-grid">
-      <div class="project-meta-item">
-        <dt>Task</dt>
-        <dd>Binary surge classification</dd>
-      </div>
-      <div class="project-meta-item">
-        <dt>Surge threshold</dt>
-        <dd>≥ 20% price increase</dd>
-      </div>
-      <div class="project-meta-item">
-        <dt>Input window</dt>
-        <dd>30-day lookback</dd>
-      </div>
-      <div class="project-meta-item">
-        <dt>Markets</dt>
-        <dd>KOSDAQ, IWM, S&P 500</dd>
-      </div>
-    </dl>
-
-    <h2>Problem</h2>
-    <p>
-      Financial markets frequently experience sudden discontinuous price movements driven by macro shocks, liquidity events, or sector-wide sentiment shifts. These jumps are often correlated across assets within short time windows, yet most classical jump-diffusion formulations treat jump sizes as independent.
-    </p>
-    <p>
-      At the same time, purely parametric stochastic models may be too rigid for noisy real-world return series, while flexible neural sequence models can overfit spurious patterns. The central question is whether continuous-time neural dynamics can improve surge prediction without sacrificing the structure implied by financial time series.
-    </p>
-
-    <h2>Approach</h2>
-    <p>We pursue two parallel lines of work and compare them on the same prediction task.</p>
-
-    <h3>1. Generalized Jump-Diffusion (GJD)</h3>
-    <p>
-      Motivated by first-passage-time problems, we extend the classical Kou jump-diffusion framework by introducing correlation among jump components through a shared systematic factor. This GJD formulation is designed to capture the empirical observation that jumps occurring in close succession are often linked to common market-wide shocks.
-    </p>
     <ul>
-      <li>Benchmark against Brownian motion, Ornstein-Uhlenbeck, and standard Kou JD</li>
-      <li>Analyze threshold-crossing behavior via first-passage-time distributions</li>
-      <li>Separate diffusion and jump components using a boundary adjustment (BA) rule on log-returns</li>
-    </ul>
+      <li>
+        <a href="../index.html#about">About</a>
+      </li>
 
-    <h3>2. NODE-Based Classifier</h3>
-    <p>
-      We adapt Neural ODEs to surge classification rather than trajectory reconstruction. The model uses an LSTM encoder to extract sequential features, passes them through a NODE refinement layer that evolves latent states in continuous time, and outputs a surge probability through a classification head.
-    </p>
-    <ul>
-      <li>Architecture: LSTM encoder → NODE layer → classification head</li>
-      <li>Trained with a classification objective (not reconstruction)</li>
-      <li>Solved with a Dormand-Prince ODE solver and adjoint sensitivity for efficient backpropagation</li>
-      <li>Compared against LSTM, CNN, and Transformer direct-prediction baselines</li>
-      <li>NODE-T variant included as a controlled comparison trained for trajectory reconstruction</li>
-    </ul>
+      <li>
+        <a href="../index.html#projects">Projects</a>
+      </li>
 
-    <div class="project-callout">
-      <p>
-        <strong style="color: var(--text-primary);">Features.</strong>
-        All neural models use a 30-day window of four standardized inputs: price, volume, Sharpe ratio, and volatility. Models are pooled across tickers within each market during training.
+      <li>
+        <a href="../index.html#teams">Teams</a>
+      </li>
+
+      <li>
+        <a
+          href="https://github.com/Frame-laboratory"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+  <!-- Project hero -->
+  <section class="project-hero">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#projects">
+        ← All Projects
+      </a>
+
+      <p class="project-type">
+        Research Paper · 2026
       </p>
+
+      <h1>
+        Predicting Price Surges with Neural ODE
+      </h1>
+
+      <p class="project-subtitle">
+        A classification-oriented continuous-time framework for predicting
+        rare and abrupt price movements in noisy financial markets.
+      </p>
+
+      <div class="project-tags">
+        <span class="project-tag">Neural ODE</span>
+        <span class="project-tag">Rare-Event Classification</span>
+        <span class="project-tag">Financial Time Series</span>
+        <span class="project-tag">Generalized Jump-Diffusion</span>
+        <span class="project-tag">First-Passage Time</span>
+        <span class="project-tag">Low-SNR Learning</span>
+      </div>
+
     </div>
+  </section>
 
-    <h2>Experimental Setup</h2>
-    <p>
-      We evaluate on three markets chosen for geographic and structural diversity:
-    </p>
-    <ul>
-      <li><strong>KOSDAQ</strong> (Korea Exchange, 2017 to 2024): a growth-oriented market with frequent sharp moves in individual names</li>
-      <li><strong>IWM</strong> (iShares Russell 2000 ETF, 2021 to 2026): a U.S. small-cap proxy for broader generalization testing</li>
-      <li><strong>S&P 500</strong> (2016 to 2024): a large-cap U.S. benchmark used in Appendix E for robustness across lower-noise environments</li>
-    </ul>
-    <p>
-      KOSDAQ and IWM serve as the primary high-volatility testbeds in the main analysis. S&P 500 is included to test whether conclusions transfer to a more stable market, and to compare performance across varying look-back windows and prediction horizons (Appendix E). Additional stochastic benchmarks (OU, GBM) and extended robustness tables are also reported in the appendix.
-    </p>
-    <p>
-      A positive label is assigned when the predicted surge probability exceeds a decision threshold of 0.5 and the realized forward price change reaches at least 20%. Stochastic models (JD and GJD) are calibrated separately per ticker, while neural models are trained in a pooled fashion across all tickers in each market.
-    </p>
 
-    <h2>Key Findings</h2>
-    <p>Preliminary results from the paper (placeholder summary):</p>
-    <ul>
-      <li>Neural network models consistently outperform classical stochastic benchmarks on high-volatility KOSDAQ and IWM</li>
-      <li>Among stochastic models, GJD improves over standard JD by allowing correlated jumps, but remains below neural performance in high-noise settings</li>
-      <li>NODE achieves the strongest overall results among all tested architectures on KOSDAQ and IWM, suggesting that continuous-time latent dynamics help suppress spurious features</li>
-      <li>IWM experiments largely confirm the patterns observed on KOSDAQ, with improved recall across neural models</li>
-      <li>On S&P 500 (Appendix E), the performance gap narrows: the lower-noise environment favors simpler models such as OU, while NODE remains competitive but less dominant than on small-cap datasets</li>
-    </ul>
+  <!-- Project content -->
+  <main class="project-body">
+    <div class="container">
 
-    <h2>Future Directions</h2>
-    <p>
-      Several extensions are natural next steps: hybrid neural-SDE models (e.g., neural SDEs) that combine parametric stochastic structure with flexible function approximation, cross-market transfer learning, and richer feature sets beyond the four baseline inputs. Figures and full result tables will be added to this page after publication.
-    </p>
+      <!-- Abstract -->
+      <h2>Abstract</h2>
 
-    <h2>Resources</h2>
-    <p>Paper, code, and supplementary materials coming soon.</p>
-    <div class="project-links">
-      <span class="project-link disabled">PDF (TBD)</span>
-      <span class="project-link disabled">arXiv (TBD)</span>
-      <span class="project-link disabled">Code (TBD)</span>
+      <p>
+        Predicting abrupt price surges in financial time series is challenging
+        because such events are rare, market data have low signal-to-noise
+        ratios, and temporal relationships can be difficult to distinguish from
+        random fluctuations.
+      </p>
+
+      <p>
+        This work formulates price-surge prediction as a binary classification
+        problem and adapts a Neural Ordinary Differential Equation (NODE)
+        framework, originally developed for continuous-path reconstruction, to
+        direct classification. The model combines an LSTM encoder, a
+        continuous-time NODE refinement layer, and a classification head. The
+        NODE layer constrains the evolution of the latent representation and
+        helps reduce overfitting to noisy financial patterns.
+      </p>
+
+      <p>
+        We compare the proposed NODE classifier with LSTM, CNN, and Transformer
+        baselines, as well as classical stochastic models. To strengthen the
+        stochastic comparison, we introduce a generalized jump-diffusion (GJD)
+        process that allows jump sizes to share a systematic component.
+        Experiments on Korean and U.S. equity markets show that the
+        classification-oriented NODE consistently outperforms both neural and
+        stochastic benchmarks.
+      </p>
+
+
+      <!-- Project metadata -->
+      <dl class="project-meta-grid">
+
+        <div class="project-meta-item">
+          <dt>Task</dt>
+          <dd>Rare-event binary classification</dd>
+        </div>
+
+        <div class="project-meta-item">
+          <dt>Prediction target</dt>
+          <dd>At least a 20% price surge</dd>
+        </div>
+
+        <div class="project-meta-item">
+          <dt>Prediction horizon</dt>
+          <dd>Next 20 trading days</dd>
+        </div>
+
+        <div class="project-meta-item">
+          <dt>Input window</dt>
+          <dd>Previous 30 trading days</dd>
+        </div>
+
+        <div class="project-meta-item">
+          <dt>Primary markets</dt>
+          <dd>KOSDAQ and IWM</dd>
+        </div>
+
+        <div class="project-meta-item">
+          <dt>Primary metric</dt>
+          <dd>Average precision</dd>
+        </div>
+
+      </dl>
+
+
+      <!-- Research question -->
+      <h2>Research Question</h2>
+
+      <p>
+        Financial time series are characterized by substantial noise, weak
+        predictive signals, and occasional extreme movements. Standard neural
+        sequence models can capture complex temporal relationships, but their
+        high flexibility also makes them susceptible to fitting spurious
+        fluctuations rather than learning stable predictive patterns.
+      </p>
+
+      <p>
+        Classical stochastic models provide greater structure and
+        interpretability, but their fixed parametric assumptions may be too
+        restrictive for complex real-world data. The central question of this
+        work is whether the continuous-time structure and implicit
+        regularization of NODE can improve rare-event classification in noisy
+        financial markets.
+      </p>
+
+
+      <!-- Methodology -->
+      <h2>Methodology</h2>
+
+      <p>
+        The study centers on a classification-oriented NODE model and evaluates
+        it against neural and stochastic benchmarks under a common price-surge
+        prediction task.
+      </p>
+
+
+      <!-- NODE -->
+      <h3>1. Classification-Oriented NODE</h3>
+
+      <p>
+        The proposed model consists of an LSTM encoder, a NODE refinement
+        layer, and a feed-forward classification head. The LSTM first compresses
+        the observed feature sequence into a latent initial condition. This
+        representation is then evolved through a learned continuous-time
+        dynamical system before being used to estimate the probability of a
+        future price surge.
+      </p>
+
+      <p>
+        Unlike NODE models designed to reconstruct complete future trajectories,
+        the proposed model is trained directly for binary classification. This
+        removes unnecessary trajectory-reconstruction objectives and focuses
+        the learned representation on information relevant to the surge event.
+      </p>
+
+      <ul>
+        <li>
+          Architecture: LSTM encoder → NODE refinement layer → classification
+          head
+        </li>
+
+        <li>
+          Directly optimized for price-surge classification
+        </li>
+
+        <li>
+          Continuous latent dynamics integrated from
+          <code>t = 0</code> to <code>t = 1</code>
+        </li>
+
+        <li>
+          Dormand–Prince adaptive ODE solver
+        </li>
+
+        <li>
+          Adjoint-state method for backpropagation through the ODE solver
+        </li>
+
+        <li>
+          Cross-entropy loss with L1 regularization
+        </li>
+      </ul>
+
+
+      <!-- Benchmarks -->
+      <h3>2. Neural Benchmark Models</h3>
+
+      <p>
+        The NODE classifier is compared with three direct-prediction
+        architectures: LSTM, CNN, and Transformer. Each model receives the same
+        input information and is trained under the same binary classification
+        setting.
+      </p>
+
+      <ul>
+        <li>
+          <strong>LSTM:</strong>
+          uses the same encoder and classification head as NODE but removes the
+          intermediate ODE layer
+        </li>
+
+        <li>
+          <strong>CNN:</strong>
+          captures local temporal patterns through one-dimensional convolutional
+          layers
+        </li>
+
+        <li>
+          <strong>Transformer:</strong>
+          models relationships across the input sequence through self-attention
+        </li>
+      </ul>
+
+      <p>
+        Because the LSTM baseline differs from NODE primarily through the
+        absence of the ODE refinement layer, the comparison helps isolate the
+        contribution of continuous-time latent dynamics.
+      </p>
+
+
+      <!-- NODE-T -->
+      <h3>3. Trajectory-Reconstruction Comparison</h3>
+
+      <p>
+        We also construct a trajectory-reproducing variant, denoted NODE-T. It
+        uses the same encoder and NODE structure but replaces the classification
+        head with a decoder trained to reconstruct future feature trajectories.
+      </p>
+
+      <p>
+        At inference, the reconstructed price path is converted into a surge
+        score. Comparing NODE with NODE-T helps distinguish the contribution of
+        the direct classification objective from the contribution of the NODE
+        architecture itself.
+      </p>
+
+
+      <!-- GJD -->
+      <h3>4. Generalized Jump-Diffusion Benchmark</h3>
+
+      <p>
+        To provide a structured stochastic benchmark, we extend the classical
+        jump-diffusion framework by allowing jump sizes to share a common
+        systematic component. In the resulting generalized jump-diffusion
+        model, each jump is represented as the combination of a shared
+        component and an idiosyncratic component.
+      </p>
+
+      <p>
+        This formulation relaxes the standard assumption that jump sizes are
+        independent and identically distributed. It is intended to capture the
+        possibility that consecutive market movements may be influenced by the
+        same information shock or underlying event.
+      </p>
+
+      <ul>
+        <li>
+          Introduces dependence among jumps through a shared systematic
+          component
+        </li>
+
+        <li>
+          Separates ordinary fluctuations from jumps using a boundary-adjustment
+          rule
+        </li>
+
+        <li>
+          Studies threshold crossing through first-passage-time analysis
+        </li>
+
+        <li>
+          Derives a tractable approximation for the Laplace transform of the
+          first-passage-time distribution
+        </li>
+
+        <li>
+          Converts the recovered distribution into a model-implied surge
+          probability
+        </li>
+      </ul>
+
+
+      <!-- Feature callout -->
+      <div class="project-callout">
+        <p>
+          <strong style="color: var(--text-primary);">
+            Input features.
+          </strong>
+
+          The neural models use a 30-day sequence containing four features:
+          log-price return, log-trading-volume change, Sharpe ratio, and
+          volatility. The Sharpe ratio and volatility are standardized using
+          statistics computed from the training data.
+        </p>
+      </div>
+
+
+      <!-- Experimental setup -->
+      <h2>Experimental Setup</h2>
+
+      <p>
+        The main experiments use individual equities from KOSDAQ and IWM. These
+        markets provide high-volatility settings in which rare price movements
+        and noisy temporal patterns occur relatively frequently.
+      </p>
+
+      <ul>
+        <li>
+          <strong>KOSDAQ:</strong>
+          Korean equities observed from 2017 to 2024
+        </li>
+
+        <li>
+          <strong>IWM:</strong>
+          U.S. small-cap equities represented through the Russell 2000 universe,
+          observed from 2021 to 2026
+        </li>
+
+        <li>
+          <strong>S&amp;P 500 and additional U.S. datasets:</strong>
+          used in supplementary experiments to evaluate performance under
+          different market conditions, look-back windows, and prediction
+          horizons
+        </li>
+      </ul>
+
+      <p>
+        For each ticker and date, a positive label is assigned when the stock
+        price increases by at least 20% at some point during the following 20
+        trading days. The prediction is based on information from the preceding
+        30 trading days.
+      </p>
+
+      <p>
+        Each ticker is divided chronologically into training, validation, and
+        test periods using a 60%–10%–30% split. The data are not shuffled,
+        preserving the temporal ordering and preventing future information from
+        entering the training process.
+      </p>
+
+      <p>
+        Neural models are trained by pooling observations across tickers within
+        each market. In contrast, the stochastic models are estimated separately
+        for each individual ticker.
+      </p>
+
+
+      <!-- Evaluation -->
+      <h3>Evaluation</h3>
+
+      <p>
+        Performance is evaluated using precision, recall, and average precision
+        (AP). Because surge observations are highly imbalanced, AP is used as
+        the primary metric because it summarizes the precision–recall tradeoff
+        across different classification thresholds.
+      </p>
+
+
+      <!-- Findings -->
+      <h2>Key Findings</h2>
+
+      <ul>
+        <li>
+          NODE achieves the highest average precision among all evaluated neural
+          and stochastic models on both KOSDAQ and IWM.
+        </li>
+
+        <li>
+          On KOSDAQ, NODE achieves an AP of 0.1830, compared with 0.1360 for the
+          structurally comparable LSTM baseline.
+        </li>
+
+        <li>
+          The KOSDAQ improvement corresponds to an AP increase of approximately
+          35% over LSTM and is driven primarily by improved precision while
+          maintaining comparable recall.
+        </li>
+
+        <li>
+          On IWM, NODE achieves an AP of 0.3135 and also substantially improves
+          recall relative to the other neural models.
+        </li>
+
+        <li>
+          NODE produces smaller train–test AP gaps than LSTM on both KOSDAQ and
+          IWM, providing empirical evidence that the NODE refinement layer
+          improves generalization in noisy settings.
+        </li>
+
+        <li>
+          NODE outperforms NODE-T, indicating that its performance advantage is
+          not explained solely by the continuous-time architecture. Directly
+          optimizing the classification objective also contributes to the
+          improvement.
+        </li>
+
+        <li>
+          GJD improves upon standard JD by incorporating dependence among jumps,
+          making it the strongest stochastic benchmark in the main experiments.
+        </li>
+
+        <li>
+          Despite this improvement, the fixed parametric stochastic models
+          remain substantially below the neural models in the high-volatility
+          KOSDAQ and IWM settings.
+        </li>
+      </ul>
+
+
+      <!-- Interpretation -->
+      <div class="project-callout">
+        <p>
+          <strong style="color: var(--text-primary);">
+            Interpretation.
+          </strong>
+
+          The results suggest that the NODE layer functions as a constrained
+          latent-space refinement mechanism. Its continuous-time dynamics help
+          suppress noisy or spurious encoded features while preserving
+          information that is useful for predicting rare price surges.
+        </p>
+      </div>
+
+
+      <!-- Market regime -->
+      <h2>Market-Regime Dependence</h2>
+
+      <p>
+        The advantage of NODE is most pronounced in volatile and noisy
+        environments such as KOSDAQ and IWM. In relatively stable markets such
+        as the S&amp;P 500, the performance gap between NODE and the benchmark
+        models becomes smaller, although NODE continues to maintain a positive
+        advantage in the reported experiments.
+      </p>
+
+      <p>
+        This pattern suggests that the value of continuous-time latent
+        regularization depends on the underlying market regime. NODE is
+        particularly useful when the model must extract weak predictive signals
+        from substantial idiosyncratic noise.
+      </p>
+
+
+      <!-- Limitations -->
+      <h2>Limitations and Future Directions</h2>
+
+      <p>
+        A primary limitation of NODE is computational cost. The adaptive ODE
+        solver and adjoint-state gradient calculation require more computation
+        than standard sequence models such as LSTM. The framework is therefore
+        better suited to lower-frequency applications, including daily
+        prediction, than to latency-sensitive high-frequency trading.
+      </p>
+
+      <p>
+        A promising extension is to combine neural architectures with stochastic
+        differential equations. Neural SDE models could preserve the flexible
+        function approximation of neural networks while explicitly
+        incorporating stochastic market dynamics. Such hybrid models may be
+        especially useful in lower-noise markets, where capturing smaller
+        stochastic variations may be more important than filtering extreme
+        noise.
+      </p>
+
+
+      <!-- Resources -->
+      <h2>Resources</h2>
+
+      <p>
+        The manuscript, source code, and supplementary materials will be made
+        available following the public release of the paper.
+      </p>
+
+      <div class="project-links">
+
+        <span class="project-link disabled">
+          PDF (TBD)
+        </span>
+
+        <span class="project-link disabled">
+          arXiv (TBD)
+        </span>
+
+        <span class="project-link disabled">
+          Code (TBD)
+        </span>
+
+      </div>
+
     </div>
-
-  </div>
-</section>
+  </main>
 
 <footer>
   <p>© 2025 FRAME &nbsp;·&nbsp;
