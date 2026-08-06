@@ -2,71 +2,1011 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Research profile of Jinu Jeong, Ph.D. in Mechanical Engineering and ML Researcher at FRAME, specializing in quantitative finance and scientific machine learning."
+  />
+
   <title>Jinu Jeong | FRAME</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .researcher-hero {
+      padding-bottom: 3.5rem;
+    }
+
+    .researcher-hero-main {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .researcher-hero-info h1 {
+      margin-bottom: 0.35rem;
+    }
+
+    .researcher-tagline {
+      max-width: 760px;
+      margin-top: 1rem;
+      color: var(--text-secondary, #666);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .profile-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 2rem;
+    }
+
+    .profile-navigation a {
+      display: inline-block;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 999px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .profile-navigation a:hover {
+      border-color: currentColor;
+      transform: translateY(-1px);
+    }
+
+    .profile-section {
+      padding: 3.75rem 0;
+      scroll-margin-top: 5rem;
+    }
+
+    .profile-section + .profile-section {
+      border-top: 1px solid rgba(127, 127, 127, 0.16);
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary, #777);
+    }
+
+    .section-introduction {
+      max-width: 780px;
+      color: var(--text-secondary, #666);
+      line-height: 1.75;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .profile-card {
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+      background: rgba(127, 127, 127, 0.025);
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.65;
+    }
+
+    .profile-card-meta {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .education-list,
+    .experience-list,
+    .publication-list,
+    .honors-list {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .timeline-item:first-child {
+      padding-top: 0;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .timeline-institution {
+      margin-bottom: 0.7rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.95rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.7;
+    }
+
+    .timeline-content ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--text-secondary, #666);
+    }
+
+    .timeline-content li {
+      margin-bottom: 0.45rem;
+      line-height: 1.6;
+    }
+
+    .publication-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+    }
+
+    .publication-number {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .publication-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .publication-authors {
+      margin: 0 0 0.45rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .publication-status {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      font-weight: 500;
+    }
+
+    .publication-description {
+      margin-top: 0.8rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .tag-group {
+      margin-bottom: 2rem;
+    }
+
+    .tag-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-group h3 {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .profile-tag {
+      display: inline-block;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(127, 127, 127, 0.22);
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+    }
+
+    .honor-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .honor-item:first-child {
+      padding-top: 0;
+    }
+
+    .honor-item:last-child {
+      border-bottom: none;
+    }
+
+    .honor-item h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    .honor-meta {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 8px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .profile-link:hover {
+      border-color: currentColor;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 760px) {
+      .researcher-hero-main {
+        align-items: flex-start;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .publication-item {
+        grid-template-columns: 1fr;
+      }
+
+      .publication-number {
+        margin-bottom: -0.4rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .researcher-hero-main {
+        flex-direction: column;
+      }
+
+      .profile-navigation {
+        gap: 0.5rem;
+      }
+
+      .profile-navigation a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.72rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-brand" href="../index.html">
-    <span></span>
-    FRAME
-  </a>
-  <ul>
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#projects">Projects</a></li>
-    <li><a href="../index.html#teams">Teams</a></li>
-    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a class="nav-brand" href="../index.html">
+      <span></span>
+      FRAME
+    </a>
 
-<section class="researcher-hero">
-  <div class="container">
-    <a class="back-link" href="../index.html#teams">← Teams</a>
-    <div class="researcher-hero-main">
-      <div class="member-avatar">JJ</div>
-      <div class="researcher-hero-info">
-        <h1>Jinu Jeong</h1>
-        <div class="member-role">ML Researcher</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="project-body">
-  <div class="container">
-
-    <h2>About</h2>
-    <p>
-      ML researcher at FRAME working at the intersection of machine learning and quantitative finance. Bio coming soon.
-    </p>
-
-    <h2>Research Interests</h2>
     <ul>
-      <li>Machine learning for financial time series</li>
-      <li>Neural architectures for market prediction</li>
-      <li>Applied trading systems and backtesting</li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#teams">Teams</a></li>
+      <li>
+        <a
+          href="https://github.com/Frame-laboratory"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </li>
     </ul>
+  </nav>
 
-    <h2>Links</h2>
-    <div class="project-links">
-      <span class="project-link disabled">CV (TBD)</span>
-      <span class="project-link disabled">GitHub (TBD)</span>
-      <span class="project-link disabled">Website (TBD)</span>
+  <section class="researcher-hero">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#teams">
+        ← Teams
+      </a>
+
+      <div class="researcher-hero-main">
+        <div class="member-avatar">JJ</div>
+
+        <div class="researcher-hero-info">
+          <h1>Jinu Jeong</h1>
+
+          <div class="member-role">
+            ML Researcher · Ph.D. in Mechanical Engineering
+          </div>
+
+          <p class="researcher-tagline">
+            Machine learning researcher with experience developing deep learning
+            models for scientific computing and quantitative finance, specializing
+            in financial market prediction, differentiable simulation, and
+            production-scale research software.
+          </p>
+        </div>
+      </div>
+
+      <div class="profile-navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research Interests</a>
+        <a href="#publications">Papers</a>
+        <a href="#ongoing-projects">Ongoing Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#honors">Honors & Presentations</a>
+        <a href="#links">Links</a>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <main class="project-body">
+    <div class="container">
 
-<footer>
-  <p>© 2025 FRAME &nbsp;·&nbsp;
-    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
-  </p>
-</footer>
+      <section class="profile-section" id="about">
+        <div class="section-heading">
+          <span class="section-label">01 · Profile</span>
+          <h2>About</h2>
+        </div>
+
+        <p class="section-introduction">
+          I am a machine learning researcher with a Ph.D. in Mechanical Engineering
+          from the University of Illinois Urbana-Champaign. My work spans quantitative
+          finance, scientific machine learning, and physics-based simulation, with a
+          focus on building models that are both predictive and computationally
+          practical.
+        </p>
+
+        <p class="section-introduction">
+          At FRAME, I lead research on predicting abrupt stock market movements by
+          integrating stochastic differential equation models with deep learning
+          approaches. I have also developed forecasting and trading systems across
+          KOSDAQ and S&amp;P 500 datasets, and built differentiable frameworks for
+          coarse-grained molecular dynamics and high-performance multiphysics
+          simulations.
+        </p>
+      </section>
+
+      <section class="profile-section" id="education">
+        <div class="section-heading">
+          <span class="section-label">02 · Background</span>
+          <h2>Education</h2>
+        </div>
+
+        <div class="education-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2019–2024</div>
+
+            <div class="timeline-content">
+              <h3>Ph.D. in Mechanical Engineering</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2017–2019</div>
+
+            <div class="timeline-content">
+              <h3>M.S. in Mechanical Engineering</h3>
+
+              <div class="timeline-institution">
+                Seoul National University
+              </div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2011–2017</div>
+
+            <div class="timeline-content">
+              <h3>B.S. in Mechanical Engineering</h3>
+
+              <div class="timeline-institution">
+                University of Ulsan
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="research">
+        <div class="section-heading">
+          <span class="section-label">03 · Research</span>
+          <h2>Research Interests</h2>
+
+          <p class="section-introduction">
+            My research interests span quantitative finance, machine learning,
+            scientific computing, and physics-based modeling.
+          </p>
+        </div>
+
+        <div class="profile-grid">
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Quantitative Finance</span>
+            <h3>Financial Market Prediction</h3>
+            <p>
+              Surge prediction, stochastic differential equations, jump-diffusion
+              models, and systematic trading with realistic market frictions.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Machine Learning</span>
+            <h3>Deep Learning for Time Series</h3>
+            <p>
+              Neural ODEs, LSTM, CNN, and Transformer architectures for
+              low-signal, rare-event prediction in financial and scientific data.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Scientific ML</span>
+            <h3>Differentiable Simulation</h3>
+            <p>
+              Data-driven coarse-graining, generalized Langevin equations, and
+              neural architectures for molecular dynamics and multiphysics systems.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Physics & Simulation</span>
+            <h3>Reduced-Order Modeling</h3>
+            <p>
+              Finite-element methods, component mode synthesis, Galerkin projection,
+              and automated computational geometry pipelines for engineering design.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="publications">
+        <div class="section-heading">
+          <span class="section-label">04 · Publications</span>
+          <h2>Selected Papers</h2>
+        </div>
+
+        <div class="publication-list">
+
+          <article class="publication-item">
+            <div class="publication-number">01</div>
+
+            <div class="publication-content">
+              <h3>Predicting Price Surges with Neural ODE</h3>
+
+              <p class="publication-authors">
+                S. Kim, J. Jeong, W. Kang, S. Nam, J. Park
+              </p>
+
+              <span class="publication-status">
+                Submitted · 2026
+              </span>
+
+              <p class="publication-description">
+                Develops a Neural ODE-based framework for predicting abrupt stock
+                market movements, integrating SDE models with deep learning and
+                achieving the highest average precision among evaluated models.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">02</div>
+
+            <div class="publication-content">
+              <h3>DiffGLE: Differentiable Coarse-Grained Dynamics using Generalized Langevin Equation</h3>
+
+              <p class="publication-authors">
+                J. Jeong and I. Nadkarni
+              </p>
+
+              <span class="publication-status">
+                Submitted · 2026
+              </span>
+
+              <p class="publication-description">
+                Introduces a differentiable generalized Langevin equation framework
+                using Neural ODEs for data-driven coarse-grained molecular dynamics.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">03</div>
+
+            <div class="publication-content">
+              <h3>Modulating Coarse-Grained Dynamics by Perturbing Free Energy Landscapes</h3>
+
+              <p class="publication-authors">
+                J. Jeong, I. Nadkarni, B. Yalcin, and N. R. Aluru
+              </p>
+
+              <span class="publication-status">
+                Journal of Physical Chemistry A · 2024
+              </span>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">04</div>
+
+            <div class="publication-content">
+              <h3>Data-driven Molecular Dynamics Simulation of Water Isotope Separation using a Catalytically Active Ultrathin Membrane</h3>
+
+              <p class="publication-authors">
+                J. Jeong, C. Liang, and N. R. Aluru
+              </p>
+
+              <span class="publication-status">
+                Physical Chemistry Chemical Physics · 2024
+              </span>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">05</div>
+
+            <div class="publication-content">
+              <h3>Extended DeepILST for Various Thermodynamic States and Applications in Coarse-Graining</h3>
+
+              <p class="publication-authors">
+                J. Jeong et al.
+              </p>
+
+              <span class="publication-status">
+                Journal of Physical Chemistry A · 2022
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="ongoing-projects">
+        <div class="section-heading">
+          <span class="section-label">05 · Projects</span>
+          <h2>Ongoing Projects</h2>
+        </div>
+
+        <div class="section-content papers">
+
+          <article class="paper">
+            <div class="paper-number">01</div>
+
+            <div>
+              <h3>
+                <a href="../projects/predicting-price-surges-with-neural-ode.html">
+                  Predicting Price Surges with Neural ODE
+                </a>
+              </h3>
+
+              <span class="paper-status">
+                Research Paper · 2026
+              </span>
+
+              <p class="paper-description">
+                Integrates correlated jump-diffusion and Neural ODE models for
+                binary surge classification on KOSDAQ, IWM, and S&amp;P 500,
+                benchmarked against LSTM, CNN, and Transformer baselines.
+              </p>
+            </div>
+          </article>
+
+          <article class="paper">
+            <div class="paper-number">02</div>
+
+            <div>
+              <h3>
+                <a href="../projects/ml-trading.html">
+                  ML-Driven Trading Algorithm
+                </a>
+              </h3>
+
+              <span class="paper-status">
+                Trading System · 2026
+              </span>
+
+              <p class="paper-description">
+                End-to-end trading pipeline for Australia, Taiwan, UK, and US
+                equities. GBM and XGBoost generate signals with backtests and
+                signal-accuracy sweeps across take-profit levels on the test split.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="experience">
+        <div class="section-heading">
+          <span class="section-label">06 · Experience</span>
+          <h2>Research and Industry Experience</h2>
+        </div>
+
+        <div class="experience-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2024–Present</div>
+
+            <div class="timeline-content">
+              <h3>Quantitative Finance and Machine Learning Researcher</h3>
+
+              <div class="timeline-institution">
+                FRAME · Collaborative with UIUC Department of Mathematics
+              </div>
+
+              <ul>
+                <li>
+                  Led research on predicting abrupt stock market movements by
+                  integrating SDE models with deep learning approaches.
+                </li>
+
+                <li>
+                  Developed and trained a Neural ODE model with an LSTM encoder,
+                  achieving the highest average precision (AP = 0.666) among all
+                  evaluated models.
+                </li>
+
+                <li>
+                  Implemented and benchmarked forecasting models (GBM,
+                  jump-diffusion, CNN, LSTM, Transformer, and Neural ODE) on
+                  KOSDAQ and S&amp;P 500 datasets, with deep learning models
+                  improving AP by approximately 30% over classical SDE baselines.
+                </li>
+
+                <li>
+                  Designed and backtested an automated trading strategy based on
+                  model predictions, incorporating brokerage fees, taxes, and
+                  slippage.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2024–Present</div>
+
+            <div class="timeline-content">
+              <h3>Physics Simulation Researcher</h3>
+
+              <div class="timeline-institution">
+                Rivian Automotive Inc.
+              </div>
+
+              <ul>
+                <li>
+                  Led end-to-end development of a reduced-order noise simulation
+                  framework using component mode synthesis and Galerkin projection,
+                  achieving over 100× faster computation while maintaining
+                  predictive accuracy.
+                </li>
+
+                <li>
+                  Led development of an automated computational geometry pipeline
+                  for parameterized rotor/stator generation, CAD import, geometry
+                  healing, and topology validation for downstream FEM simulations.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2019–2024</div>
+
+            <div class="timeline-content">
+              <h3>Physics Modeling Researcher</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <ul>
+                <li>
+                  Initiated and led development of a differentiable generalized
+                  Langevin equation framework using Neural ODEs for data-driven
+                  coarse-grained molecular dynamics.
+                </li>
+
+                <li>
+                  Developed data-driven molecular dynamics methods for water isotope
+                  separation and multi-atom coarse-graining across thermodynamic
+                  states, resulting in multiple first-author publications.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="skills">
+        <div class="section-heading">
+          <span class="section-label">07 · Capabilities</span>
+          <h2>Skills</h2>
+        </div>
+
+        <div class="tag-group">
+          <h3>Programming and Data</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Python</span>
+            <span class="profile-tag">PyTorch</span>
+            <span class="profile-tag">TensorFlow</span>
+            <span class="profile-tag">SciPy</span>
+            <span class="profile-tag">scikit-learn</span>
+            <span class="profile-tag">C/C++</span>
+            <span class="profile-tag">Git</span>
+            <span class="profile-tag">Linux</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Machine Learning</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Neural ODEs</span>
+            <span class="profile-tag">LSTM</span>
+            <span class="profile-tag">CNN</span>
+            <span class="profile-tag">Transformers</span>
+            <span class="profile-tag">Graph Neural Networks</span>
+            <span class="profile-tag">Object Detection</span>
+            <span class="profile-tag">XGBoost</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Quantitative Methods</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Stochastic Differential Equations</span>
+            <span class="profile-tag">Jump-Diffusion Models</span>
+            <span class="profile-tag">Financial Time Series</span>
+            <span class="profile-tag">Backtesting</span>
+            <span class="profile-tag">Rare-Event Prediction</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Physics & Simulation</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Molecular Dynamics</span>
+            <span class="profile-tag">Statistical Mechanics</span>
+            <span class="profile-tag">Finite Element Methods</span>
+            <span class="profile-tag">Reduced-Order Modeling</span>
+            <span class="profile-tag">Differentiable Simulation</span>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="profile-section" id="honors">
+        <div class="section-heading">
+          <span class="section-label">08 · Recognition</span>
+          <h2>Honors and Presentations</h2>
+        </div>
+
+        <div class="honors-list">
+
+          <article class="honor-item">
+            <h3>Oden Institute Fellowship</h3>
+
+            <p class="honor-meta">
+              University of Illinois Urbana-Champaign · 2022–2024
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Kwanjeong Educational Foundation Honor Scholarship</h3>
+
+            <p class="honor-meta">
+              2019–2023
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>US National Congress on Computational Mechanics (USNCCM16) Conference Award</h3>
+
+            <p class="honor-meta">
+              July 2021
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>University of Ulsan Honor Scholarship</h3>
+
+            <p class="honor-meta">
+              2014–2016
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Society of Engineering Science Annual Meeting</h3>
+
+            <p class="honor-meta">
+              Research presentation · Oct 16–19, 2022
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>16th U.S. National Congress on Computational Mechanics</h3>
+
+            <p class="honor-meta">
+              Research presentation · Jul 25–29, 2021
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="links">
+        <div class="section-heading">
+          <span class="section-label">09 · Contact</span>
+          <h2>Links</h2>
+
+          <p class="section-introduction">
+            Research profiles, code, and professional materials.
+          </p>
+        </div>
+
+        <div class="profile-links">
+
+          <a
+            class="profile-link"
+            href="../assets/Jinu_Jeong_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="https://github.com/jinu-jeong"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="mailto:jinu.j0912us@gmail.com"
+          >
+            Email ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="https://linkedin.com/in/jinu-jeong"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn ↗
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      © 2026 FRAME &nbsp;·&nbsp;
+
+      <a
+        href="https://github.com/Frame-laboratory"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github.com/Frame-laboratory
+      </a>
+    </p>
+  </footer>
 
 </body>
 </html>
