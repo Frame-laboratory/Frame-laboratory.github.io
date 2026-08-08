@@ -28,7 +28,7 @@
   <div class="container">
     <a class="back-link" href="../index.html#projects">← All Projects</a>
     <p class="project-type">Trading System · 2026</p>
-    <h1>ML-Driven Trading Algorithm</h1>
+    <h1>Price-Surge Prediction for Systematic Trading</h1>
     <div class="project-tags">
       <span class="project-tag">XGBoost</span>
       <span class="project-tag">GBM</span>
@@ -45,7 +45,7 @@
 
     <h2>Overview</h2>
     <p>
-      This project is a long-only equity trading system spanning four markets — <strong>Australia (AU)</strong>, <strong>Taiwan (TW)</strong>, <strong>United Kingdom (UK)</strong>, and <strong>United States (US)</strong> — on Interactive Brokers 1-day bars. Two signal engines — a closed-form GBM first-passage model and a trained XGBoost classifier — score the cross-section daily; a slot-based portfolio simulator turns those scores into trades with explicit entry, exit, and cost rules.
+      This ongoing project is a equity trading system spanning four markets — <strong>Australia (AU)</strong>, <strong>Taiwan (TW)</strong>, <strong>United Kingdom (UK)</strong>, and <strong>United States (US)</strong> — on 1-day bars. Two signal engines — a Neural ODE and a trained XGBoost classifier — score the cross-section daily; a slot-based portfolio simulator turns those scores into trades with explicit entry, exit, and cost rules.
     </p>
     <p>
       Results below are produced on the <strong>test split</strong> across all four markets. The focus is on whether model scores translate into tradable edge under realistic position limits, barrier exits, and transaction costs — not just offline classification accuracy.
@@ -62,17 +62,16 @@
       </div>
       <div class="project-meta-item">
         <dt>Data</dt>
-        <dd>IB 1d OHLCV</dd>
-      </div>
-      <div class="project-meta-item">
-        <dt>Status</dt>
-        <dd>Ongoing</dd>
+        <dd>1d OHLCV</dd>
       </div>
     </dl>
 
     <h2>Trading &amp; Backtest Setup</h2>
     <p>
-      Backtests use a <strong>slot-based</strong> long-only portfolio with no periodic rebalancing. Positions exit on take-profit, stop-loss, or max-hold; freed slots are refilled the same day from the highest-scoring names still available. Cash from closed positions is pooled and split equally across open slots.
+      Backtests use a <strong>slot-based</strong> long-only portfolio with no periodic rebalancing. 
+      Positions exit on take-profit, stop-loss, or max-hold; freed slots are refilled the same day 
+      from the highest-scoring names still available. Cash from closed positions remains in the 
+      cash pool until the next investment opportunity arises.
     </p>
 
     <h3>Portfolio rules</h3>
@@ -80,7 +79,7 @@
       <li><strong>Concurrent slots (K)</strong> — up to 10 positions at once</li>
       <li><strong>Allocation</strong> — equal cash per open slot: <code>cash / n_open_slots</code>; unused slot budget stays in cash</li>
       <li><strong>Rebalancing</strong> — none; only intraday slot turnover after exits</li>
-      <li><strong>Entry filter</strong> — score ≥ 0.5 (<code>MIN_ENTRY_SCORE</code>); lower scores are never bought</li>
+      <li><strong>Entry filter</strong> — score ≥ 0.7 (<code>MIN_ENTRY_SCORE</code>); lower scores are never bought</li>
       <li><strong>Selection</strong> — highest score first within the active score bucket; already-held names excluded</li>
       <li><strong>Idle cash</strong> — compounds at 2% annual risk-free rate</li>
     </ul>
@@ -88,15 +87,15 @@
     <h3>Signal → entry</h3>
     <ul>
       <li><strong>Signal time</strong> — end of day D, using closes up to and including D</li>
-      <li><strong>Entry price</strong> — close of day D (slot mode)</li>
+      <li><strong>Entry price</strong> — open of day D+1 </li>
       <li><strong>Universe</strong> — IB 1d panels for AU, TW, UK, US</li>
     </ul>
 
     <h3>Exit rules</h3>
     <ul>
-      <li><strong>Max hold (H)</strong> — 20 trading days; exit at close if still open</li>
+      <li><strong>Max hold (H)</strong> — 20 trading days</li>
       <li><strong>Take-profit</strong> — +TP from entry; triggered on the day's <strong>high</strong></li>
-      <li><strong>Stop-loss</strong> — −SL from entry; triggered on the day's <strong>low</strong>; default <strong>SL = TP × 0.5</strong></li>
+      <li><strong>Stop-loss</strong> — −SL from entry; triggered on the day's <strong>low</strong></li>
       <li><strong>Same-day TP + SL</strong> — stop-loss assumed first (conservative long)</li>
       <li><strong>Gap through open</strong> — if the open gaps past TP or SL, fill at the open price</li>
       <li><strong>TP sweep</strong> — 5% through 20% in backtest heatmaps</li>
