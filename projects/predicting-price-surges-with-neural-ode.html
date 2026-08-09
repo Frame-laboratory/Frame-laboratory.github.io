@@ -473,6 +473,414 @@
         </li>
       </ul>
 
+      <!-- Main performance results -->
+      <h3 class="results-heading">Main Performance Results</h3>
+
+      <div class="table-scroll">
+        <table class="research-table research-table-wide">
+          <caption>
+            Results on KOSDAQ (2017–2024) and IWM (2021–2026)
+          </caption>
+
+          <thead>
+            <tr class="dataset-heading">
+              <th colspan="8">KOSDAQ</th>
+            </tr>
+
+            <tr class="model-family-heading">
+              <th colspan="4">Classical stochastic models</th>
+              <th colspan="4">Neural network models</th>
+            </tr>
+
+            <tr>
+              <th>Model</th>
+              <th>Prec.</th>
+              <th>Rec.</th>
+              <th>AP</th>
+              <th>Model</th>
+              <th>Prec.</th>
+              <th>Rec.</th>
+              <th>AP</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="model-group">JD</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>
+                <strong>LSTM</strong>
+                <span class="standard-error">±0.0037</span>
+              </td>
+              <td>
+                0.1374
+                <span class="standard-error">±0.0037</span>
+              </td>
+              <td>
+                0.4329
+                <span class="standard-error">±0.0262</span>
+              </td>
+              <td>
+                0.1360
+                <span class="standard-error">±0.0017</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 1.5</td>
+              <td>0.2475</td>
+              <td>0.1775</td>
+              <td>0.0494</td>
+              <td>
+                <strong>CNN</strong>
+                <span class="standard-error">±0.0011</span>
+              </td>
+              <td>
+                0.1393
+                <span class="standard-error">±0.0011</span>
+              </td>
+              <td>
+                0.4549
+                <span class="standard-error">±0.0199</span>
+              </td>
+              <td>
+                0.1383
+                <span class="standard-error">±0.0014</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.0</td>
+              <td>0.2508</td>
+              <td>0.1279</td>
+              <td>0.0360</td>
+              <td>
+                <strong>Transformer</strong>
+                <span class="standard-error">±0.0004</span>
+              </td>
+              <td>
+                0.1352
+                <span class="standard-error">±0.0004</span>
+              </td>
+              <td>
+                0.4591
+                <span class="standard-error">±0.0078</span>
+              </td>
+              <td>
+                0.1401
+                <span class="standard-error">±0.0006</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.5</td>
+              <td>0.2689</td>
+              <td>0.0471</td>
+              <td>0.0142</td>
+              <td class="best-model">
+                <strong>NODE</strong>
+                <span class="standard-error">±0.0038</span>
+              </td>
+              <td class="best-model">
+                0.1857
+                <span class="standard-error">±0.0038</span>
+              </td>
+              <td class="best-model">
+                0.4361
+                <span class="standard-error">±0.0097</span>
+              </td>
+              <td class="best-result">
+                0.1830
+                <span class="standard-error">±0.0023</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 3.0</td>
+              <td>0.2833</td>
+              <td>0.0100</td>
+              <td>0.0033</td>
+              <td>
+                <strong>NODE-T</strong>
+                <span class="standard-error">±0.0266</span>
+              </td>
+              <td>
+                0.2208
+                <span class="standard-error">±0.0266</span>
+              </td>
+              <td>
+                0.0368
+                <span class="standard-error">±0.0103</span>
+              </td>
+              <td>
+                0.1584
+                <span class="standard-error">±0.0129</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-group">GJD</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 1.5</td>
+              <td>0.2188</td>
+              <td>0.2422</td>
+              <td class="best-stochastic">0.0540</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.0</td>
+              <td>0.2477</td>
+              <td>0.0985</td>
+              <td>0.0253</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.5</td>
+              <td>0.2808</td>
+              <td>0.0267</td>
+              <td>0.0079</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 3.0</td>
+              <td>0.2852</td>
+              <td>0.0032</td>
+              <td>0.0009</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+          </tbody>
+
+          <thead>
+            <tr class="dataset-heading dataset-divider">
+              <th colspan="8">IWM</th>
+            </tr>
+
+            <tr class="model-family-heading">
+              <th colspan="4">Classical stochastic models</th>
+              <th colspan="4">Neural network models</th>
+            </tr>
+
+            <tr>
+              <th>Model</th>
+              <th>Prec.</th>
+              <th>Rec.</th>
+              <th>AP</th>
+              <th>Model</th>
+              <th>Prec.</th>
+              <th>Rec.</th>
+              <th>AP</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td class="model-group">JD</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><strong>LSTM</strong></td>
+              <td>
+                0.2032
+                <span class="standard-error">±0.0016</span>
+              </td>
+              <td>
+                0.5699
+                <span class="standard-error">±0.0056</span>
+              </td>
+              <td>
+                0.2082
+                <span class="standard-error">±0.0020</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 1.5</td>
+              <td>0.2532</td>
+              <td>0.2013</td>
+              <td>0.0598</td>
+              <td><strong>CNN</strong></td>
+              <td>
+                0.2221
+                <span class="standard-error">±0.0035</span>
+              </td>
+              <td>
+                0.5941
+                <span class="standard-error">±0.0191</span>
+              </td>
+              <td>
+                0.2299
+                <span class="standard-error">±0.0033</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.0</td>
+              <td>0.2517</td>
+              <td>0.1112</td>
+              <td>0.0333</td>
+              <td><strong>Transformer</strong></td>
+              <td>
+                0.2036
+                <span class="standard-error">±0.0016</span>
+              </td>
+              <td>
+                0.5804
+                <span class="standard-error">±0.0046</span>
+              </td>
+              <td>
+                0.2008
+                <span class="standard-error">±0.0049</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.5</td>
+              <td>0.2428</td>
+              <td>0.0199</td>
+              <td>0.0059</td>
+              <td class="best-model"><strong>NODE</strong></td>
+              <td class="best-model">
+                0.2538
+                <span class="standard-error">±0.0062</span>
+              </td>
+              <td class="best-model">
+                0.7336
+                <span class="standard-error">±0.0231</span>
+              </td>
+              <td class="best-result">
+                0.3135
+                <span class="standard-error">±0.0019</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 3.0</td>
+              <td>0.1989</td>
+              <td>0.0016</td>
+              <td>0.0004</td>
+              <td><strong>NODE-T</strong></td>
+              <td>
+                0.3320
+                <span class="standard-error">±0.0609</span>
+              </td>
+              <td>
+                0.0416
+                <span class="standard-error">±0.0252</span>
+              </td>
+              <td>
+                0.2373
+                <span class="standard-error">±0.0130</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="model-group">GJD</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 1.5</td>
+              <td>0.2183</td>
+              <td>0.2986</td>
+              <td class="best-stochastic">0.0683</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.0</td>
+              <td>0.2478</td>
+              <td>0.0974</td>
+              <td>0.0264</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 2.5</td>
+              <td>0.2582</td>
+              <td>0.0156</td>
+              <td>0.0044</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+
+            <tr>
+              <td class="model-variant">BA = 3.0</td>
+              <td>0.2459</td>
+              <td>0.0012</td>
+              <td>0.0003</td>
+              <td colspan="4" class="empty-cell"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+      <!-- Train-test comparison -->
+      <h3 class="results-heading">Generalization Performance</h3>
+
+      <div class="table-scroll">
+        <table class="research-table">
+          <caption>
+            Train–test AP comparison for LSTM and NODE on KOSDAQ and IWM
+          </caption>
+
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Model</th>
+              <th>Train AP</th>
+              <th>Test AP</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th scope="rowgroup" rowspan="2">KOSDAQ</th>
+              <td>LSTM</td>
+              <td>0.6942 <span class="inline-error">±0.0042</span></td>
+              <td>0.1366 <span class="inline-error">±0.0014</span></td>
+              <td>0.5576 <span class="inline-error">±0.0031</span></td>
+            </tr>
+
+            <tr class="node-row">
+              <td><strong>NODE</strong></td>
+              <td>0.6936 <span class="inline-error">±0.0001</span></td>
+              <td><strong>0.1839</strong> <span class="inline-error">±0.0021</span></td>
+              <td><strong>0.5097</strong> <span class="inline-error">±0.0021</span></td>
+            </tr>
+
+            <tr class="dataset-divider">
+              <th scope="rowgroup" rowspan="2">IWM</th>
+              <td>LSTM</td>
+              <td>0.7238 <span class="inline-error">±0.0041</span></td>
+              <td>0.2074 <span class="inline-error">±0.0008</span></td>
+              <td>0.5164 <span class="inline-error">±0.0039</span></td>
+            </tr>
+
+            <tr class="node-row">
+              <td><strong>NODE</strong></td>
+              <td>0.7410 <span class="inline-error">±0.0007</span></td>
+              <td><strong>0.3142</strong> <span class="inline-error">±0.0018</span></td>
+              <td><strong>0.4268</strong> <span class="inline-error">±0.0021</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 
       <!-- Interpretation -->
       <div class="project-callout">
