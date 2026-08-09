@@ -768,3 +768,7 @@ footer a:hover { color: var(--accent); }
     padding: 0.6rem 0.7rem;
   }
 }
+
+.research-table .node-row td:first-child {
+  text-align: center;
+}
