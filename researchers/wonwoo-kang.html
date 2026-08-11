@@ -2,71 +2,973 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Research profile of Wonwoo Kang, postdoctoral researcher at ICMS-Sofia and Math Researcher at FRAME, working in cluster algebras and representation theory."
+  />
+
   <title>Wonwoo Kang | FRAME</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .researcher-hero {
+      padding-bottom: 3.5rem;
+    }
+
+    .researcher-hero-main {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .researcher-hero-info h1 {
+      margin-bottom: 0.35rem;
+    }
+
+    .researcher-tagline {
+      max-width: 760px;
+      margin-top: 1rem;
+      color: var(--text-secondary, #666);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .profile-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 2rem;
+    }
+
+    .profile-navigation a {
+      display: inline-block;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 999px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        background-color 0.2s ease;
+    }
+
+    .profile-navigation a:hover {
+      border-color: currentColor;
+      transform: translateY(-1px);
+    }
+
+    .profile-section {
+      padding: 3.75rem 0;
+      scroll-margin-top: 5rem;
+    }
+
+    .profile-section + .profile-section {
+      border-top: 1px solid rgba(127, 127, 127, 0.16);
+    }
+
+    .section-heading {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary, #777);
+    }
+
+    .section-introduction {
+      max-width: 780px;
+      color: var(--text-secondary, #666);
+      line-height: 1.75;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .profile-card {
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+      background: rgba(127, 127, 127, 0.025);
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .profile-card p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.65;
+    }
+
+    .profile-card-meta {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .education-list,
+    .experience-list,
+    .publication-list,
+    .honors-list {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .timeline-item:first-child {
+      padding-top: 0;
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-date {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 0.3rem;
+      font-size: 1rem;
+    }
+
+    .timeline-institution {
+      margin-bottom: 0.7rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.95rem;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      line-height: 1.7;
+    }
+
+    .timeline-content ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--text-secondary, #666);
+    }
+
+    .timeline-content li {
+      margin-bottom: 0.45rem;
+      line-height: 1.6;
+    }
+
+    .publication-item {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(127, 127, 127, 0.18);
+      border-radius: 14px;
+    }
+
+    .publication-number {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary, #777);
+    }
+
+    .publication-content h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+
+    .publication-authors {
+      margin: 0 0 0.45rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .publication-status {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      font-weight: 500;
+    }
+
+    .publication-description {
+      margin-top: 0.8rem;
+      color: var(--text-secondary, #666);
+      font-size: 0.92rem;
+      line-height: 1.65;
+    }
+
+    .tag-group {
+      margin-bottom: 2rem;
+    }
+
+    .tag-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .tag-group h3 {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .profile-tag {
+      display: inline-block;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid rgba(127, 127, 127, 0.22);
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+    }
+
+    .honor-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(127, 127, 127, 0.14);
+    }
+
+    .honor-item:first-child {
+      padding-top: 0;
+    }
+
+    .honor-item:last-child {
+      border-bottom: none;
+    }
+
+    .honor-item h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    .honor-meta {
+      margin: 0;
+      color: var(--text-secondary, #666);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0.7rem 1rem;
+      border: 1px solid rgba(127, 127, 127, 0.25);
+      border-radius: 8px;
+      color: inherit;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.78rem;
+      text-decoration: none;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .profile-link:hover {
+      border-color: currentColor;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 760px) {
+      .researcher-hero-main {
+        align-items: flex-start;
+      }
+
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .publication-item {
+        grid-template-columns: 1fr;
+      }
+
+      .publication-number {
+        margin-bottom: -0.4rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .researcher-hero-main {
+        flex-direction: column;
+      }
+
+      .profile-navigation {
+        gap: 0.5rem;
+      }
+
+      .profile-navigation a {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.72rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav>
-  <a class="nav-brand" href="../index.html">
-    <span></span>
-    FRAME
-  </a>
-  <ul>
-    <li><a href="../index.html#about">About</a></li>
-    <li><a href="../index.html#projects">Projects</a></li>
-    <li><a href="../index.html#teams">Teams</a></li>
-    <li><a href="https://github.com/Frame-laboratory" target="_blank">GitHub ↗</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a class="nav-brand" href="../index.html">
+      <span></span>
+      FRAME
+    </a>
 
-<section class="researcher-hero">
-  <div class="container">
-    <a class="back-link" href="../index.html#teams">← Teams</a>
-    <div class="researcher-hero-main">
-      <div class="member-avatar">WK</div>
-      <div class="researcher-hero-info">
-        <h1>Wonwoo Kang</h1>
-        <div class="member-role">Math Researcher</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="project-body">
-  <div class="container">
-
-    <h2>About</h2>
-    <p>
-      Mathematics researcher at FRAME focused on stochastic modeling and theoretical foundations for financial applications. Bio coming soon.
-    </p>
-
-    <h2>Research Interests</h2>
     <ul>
-      <li>Jump-diffusion and stochastic processes</li>
-      <li>First-passage-time problems in finance</li>
-      <li>Mathematical modeling of rare market events</li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#teams">Teams</a></li>
+      <li>
+        <a
+          href="https://github.com/Frame-laboratory"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </li>
     </ul>
+  </nav>
 
-    <h2>Links</h2>
-    <div class="project-links">
-      <span class="project-link disabled">CV (TBD)</span>
-      <span class="project-link disabled">GitHub (TBD)</span>
-      <span class="project-link disabled">Website (TBD)</span>
+  <section class="researcher-hero">
+    <div class="container">
+
+      <a class="back-link" href="../index.html#teams">
+        ← Teams
+      </a>
+
+      <div class="researcher-hero-main">
+        <div class="member-avatar">WK</div>
+
+        <div class="researcher-hero-info">
+          <h1>Wonwoo Kang</h1>
+
+          <div class="member-role">
+            Math Researcher · Postdoctoral Researcher in Mathematics
+          </div>
+
+          <p class="researcher-tagline">
+            Mathematician working in cluster algebras and representation theory,
+            with recent research on surfaces and orbifolds, skein relations,
+            combinatorial expansion formulas, and unimodality.
+          </p>
+        </div>
+      </div>
+
+      <div class="profile-navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research Interests</a>
+        <a href="#publications">Papers</a>
+        <a href="#ongoing-projects">Ongoing Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#honors">Honors &amp; Presentations</a>
+        <a href="#links">Links</a>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
+  <main class="project-body">
+    <div class="container">
 
-<footer>
-  <p>© 2025 FRAME &nbsp;·&nbsp;
-    <a href="https://github.com/Frame-laboratory" target="_blank">github.com/Frame-laboratory</a>
-  </p>
-</footer>
+      <section class="profile-section" id="about">
+        <div class="section-heading">
+          <span class="section-label">01 · Profile</span>
+          <h2>About</h2>
+        </div>
+
+        <p class="section-introduction">
+          I am a postdoctoral researcher at the International Center for Mathematical
+          Sciences-Sofia, Institute of Mathematics and Informatics, Bulgarian Academy
+          of Sciences. I received my Ph.D. in Mathematics from the University of
+          Illinois Urbana-Champaign in 2025 under the supervision of Professor Rinat Kedem.
+        </p>
+
+        <p class="section-introduction">
+          My research interests are cluster algebra and representation theory. My recent
+          work studies cluster algebras and generalized cluster algebras arising from
+          surfaces and orbifolds, including combinatorial expansion formulas, skein
+          relations, and unimodality phenomena. At FRAME, I also contribute to the
+          collaborative price-surge prediction and systematic-trading projects listed below.
+        </p>
+      </section>
+
+      <section class="profile-section" id="education">
+        <div class="section-heading">
+          <span class="section-label">02 · Background</span>
+          <h2>Education</h2>
+        </div>
+
+        <div class="education-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2019–2025</div>
+
+            <div class="timeline-content">
+              <h3>Ph.D. in Mathematics</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <p>Advisor: Professor Rinat Kedem</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2014–2018</div>
+
+            <div class="timeline-content">
+              <h3>B.S. in Mathematics</h3>
+
+              <div class="timeline-institution">
+                Yonsei University
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="research">
+        <div class="section-heading">
+          <span class="section-label">03 · Research</span>
+          <h2>Research Interests</h2>
+
+          <p class="section-introduction">
+            My primary research interests are cluster algebra and representation theory.
+          </p>
+        </div>
+
+        <div class="profile-grid">
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Cluster Algebra</span>
+            <h3>Surfaces and Orbifolds</h3>
+            <p>
+              Cluster algebras and generalized cluster algebras from surfaces and
+              orbifolds, including combinatorial expansion formulas, skein relations,
+              and unimodality.
+            </p>
+          </article>
+
+          <article class="profile-card">
+            <span class="profile-card-meta">Representation Theory</span>
+            <h3>Representation Theory</h3>
+            <p>
+              Representation theory is a primary research interest.
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="publications">
+        <div class="section-heading">
+          <span class="section-label">04 · Publications</span>
+          <h2>Selected Papers</h2>
+        </div>
+
+        <div class="publication-list">
+
+          <article class="publication-item">
+            <div class="publication-number">01</div>
+
+            <div class="publication-content">
+              <h3>Predicting Price Surges with Neural ODE</h3>
+
+              <p class="publication-authors">
+                S. Kim, J. Jeong, W. Kang, S. Nam, J. Park
+              </p>
+
+              <span class="publication-status">
+                Submitted · 2026
+              </span>
+
+              <p class="publication-description">
+                Develops a Neural ODE-based framework for predicting abrupt stock
+                market movements by combining stochastic models with deep learning.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">02</div>
+
+            <div class="publication-content">
+              <h3>Cluster Expansions from Punctured Orbifolds</h3>
+
+              <p class="publication-authors">
+                W. Kang, E. Banaian, E. Kelley, E. Oğuz, and E. Yıldırım
+              </p>
+
+              <span class="publication-status">
+                Preprint · 2026
+              </span>
+
+              <p class="publication-description">
+                Studies combinatorial expansion formulas for generalized cluster
+                algebras arising from punctured orbifolds.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">03</div>
+
+            <div class="publication-content">
+              <h3>Unimodality and Cluster Algebras from Surfaces</h3>
+
+              <p class="publication-authors">
+                W. Kang, K. Lee, and E. Lim
+              </p>
+
+              <span class="publication-status">
+                European Journal of Combinatorics · 136 (2026) · 104392
+              </span>
+
+              <p class="publication-description">
+                Investigates unimodality phenomena arising from cluster algebras
+                associated with surfaces.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">04</div>
+
+            <div class="publication-content">
+              <h3>Skein Relations for Punctured Surfaces</h3>
+
+              <p class="publication-authors">
+                W. Kang, E. Banaian, and E. Kelley
+              </p>
+
+              <span class="publication-status">
+                Submitted · Preprint 2024
+              </span>
+
+              <p class="publication-description">
+                Develops skein relations for cluster-algebraic constructions on
+                punctured surfaces; a version also appeared in the FPSAC 2024 proceedings.
+              </p>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">05</div>
+
+            <div class="publication-content">
+              <h3>Persistent Laplacian Diagrams</h3>
+
+              <p class="publication-authors">
+                W. Kang, I. Jung, and H. Park
+              </p>
+
+              <span class="publication-status">
+                Submitted · Preprint 2025
+              </span>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">06</div>
+
+            <div class="publication-content">
+              <h3>Bridging the Know-Act Gap via Task-Level Autoregressive Reasoning</h3>
+
+              <p class="publication-authors">
+                W. Kang, J. Ahn, R. Kamoi, B. Atil, R. Lou, et al.
+              </p>
+
+              <span class="publication-status">
+                Preprint · 2026
+              </span>
+            </div>
+          </article>
+
+          <article class="publication-item">
+            <div class="publication-number">07</div>
+
+            <div class="publication-content">
+              <h3>Accelerated Evaluation of Ollivier-Ricci Curvature Lower Bounds: Bridging Theory and Computation</h3>
+
+              <p class="publication-authors">
+                W. Kang and H. Park
+              </p>
+
+              <span class="publication-status">
+                Submitted · Preprint 2024
+              </span>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="ongoing-projects">
+        <div class="section-heading">
+          <span class="section-label">05 · Projects</span>
+          <h2>Ongoing Projects</h2>
+        </div>
+
+        <div class="section-content papers">
+
+          <article class="paper">
+            <div class="paper-number">01</div>
+
+            <div>
+              <h3>
+                <a href="../projects/predicting-price-surges-with-neural-ode.html">
+                  Predicting Price Surges with Neural ODE
+                </a>
+              </h3>
+
+              <span class="paper-status">
+                Research Paper · 2026
+              </span>
+
+              <p class="paper-description">
+                Integrates correlated jump-diffusion and Neural ODE models for
+                binary surge classification on KOSDAQ, IWM, and S&amp;P 500,
+                benchmarked against LSTM, CNN, and Transformer baselines.
+              </p>
+            </div>
+          </article>
+
+          <article class="paper">
+            <div class="paper-number">02</div>
+
+            <div>
+              <h3>
+                <a href="../projects/ml-trading.html">
+                  Price-Surge Prediction for Systematic Trading
+                </a>
+              </h3>
+
+              <span class="paper-status">
+                Work in progress
+              </span>
+
+              <p class="paper-description">
+                Building on our research on price-surge prediction with Neural ODEs,
+                this project develops an end-to-end systematic trading framework that
+                converts predicted surge probabilities into actionable trading signals.
+                We compare Neural ODEs, XGBoost, and other sequence-learning models while
+                studying signal construction, model training, trading rules, portfolio
+                formation, and out-of-sample performance.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="experience">
+        <div class="section-heading">
+          <span class="section-label">06 · Experience</span>
+          <h2>Research and Teaching Experience</h2>
+        </div>
+
+        <div class="experience-list">
+
+          <article class="timeline-item">
+            <div class="timeline-date">2025–Present</div>
+
+            <div class="timeline-content">
+              <h3>Postdoctoral Researcher</h3>
+
+              <div class="timeline-institution">
+                International Center for Mathematical Sciences-Sofia · Institute of
+                Mathematics and Informatics, Bulgarian Academy of Sciences
+              </div>
+
+              <p>
+                Research in cluster algebra and representation theory.
+              </p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2019–2025</div>
+
+            <div class="timeline-content">
+              <h3>Teaching Assistant</h3>
+
+              <div class="timeline-institution">
+                University of Illinois Urbana-Champaign
+              </div>
+
+              <ul>
+                <li>
+                  Taught or supported courses in precalculus, calculus, business
+                  calculus, multivariable calculus, differential equations, and
+                  linear algebra with computational applications.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">2018–2019</div>
+
+            <div class="timeline-content">
+              <h3>Teaching Assistant</h3>
+
+              <div class="timeline-institution">
+                Yonsei University
+              </div>
+
+              <ul>
+                <li>
+                  Supported Calculus I, Calculus II, and Discrete Mathematics.
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Academic Service</div>
+
+            <div class="timeline-content">
+              <h3>Referee and Seminar Organization</h3>
+
+              <div class="timeline-institution">
+                Combinatorial Theory · University of Illinois Urbana-Champaign
+              </div>
+
+              <ul>
+                <li>Referee for <em>Combinatorial Theory</em>.</li>
+                <li>Co-organizer of the AWM Graduate Student Colloquium at UIUC.</li>
+                <li>Co-organizer of the Student Cluster Algebra Seminar at UIUC.</li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="skills">
+        <div class="section-heading">
+          <span class="section-label">07 · Capabilities</span>
+          <h2>Skills</h2>
+        </div>
+
+        <div class="tag-group">
+          <h3>Mathematical Tools</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">LaTeX</span>
+            <span class="profile-tag">Mathematica</span>
+          </div>
+        </div>
+
+        <div class="tag-group">
+          <h3>Languages</h3>
+
+          <div class="tag-list">
+            <span class="profile-tag">Korean · Native</span>
+            <span class="profile-tag">English · Advanced</span>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="profile-section" id="honors">
+        <div class="section-heading">
+          <span class="section-label">08 · Recognition</span>
+          <h2>Honors and Presentations</h2>
+        </div>
+
+        <div class="honors-list">
+
+          <article class="honor-item">
+            <h3>Susan C. Morisato IML Scholarship</h3>
+            <p class="honor-meta">University of Illinois Urbana-Champaign · 2024</p>
+          </article>
+
+          <article class="honor-item">
+            <h3>R.H. Schark Scholarship</h3>
+            <p class="honor-meta">University of Illinois Urbana-Champaign · 2023</p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Cryptoanalysis Contest · 2nd Place</h3>
+            <p class="honor-meta">Korea Ministry of National Defense · 2018</p>
+          </article>
+
+          <article class="honor-item">
+            <h3>National Science and Technology Scholarship</h3>
+            <p class="honor-meta">Korea Student Aid Foundation · 2016–2017</p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Academic Scholarship</h3>
+            <p class="honor-meta">Yonsei University · 2014–2015</p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Farey’s Legacy in Frieze Patterns and Discrete Geometry</h3>
+            <p class="honor-meta">
+              Poster: “Unimodality from Cluster Algebras from Surfaces” · ICMS Edinburgh · April 2026
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Quantum Groups and Cluster Algebras, International Conference</h3>
+            <p class="honor-meta">
+              Talk: “Combinatorial Expansion Formulae for Generalized Cluster Algebras from Punctured Orbifolds” · Bulgaria · December 2025
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>2025 Spring Southeastern AMS Sectional Meeting</h3>
+            <p class="honor-meta">
+              Talk: “Unimodality and Cluster Algebras from Surfaces” · March 2025
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Formal Power Series and Algebraic Combinatorics (FPSAC)</h3>
+            <p class="honor-meta">
+              Poster: “Skein Relations for Punctured Surfaces” · Ruhr-Universität Bochum · July 2024
+            </p>
+          </article>
+
+          <article class="honor-item">
+            <h3>Selected Seminar Talks on Skein Relations for Punctured Surfaces</h3>
+            <p class="honor-meta">
+              Yonsei University · Pusan National University · IBS Daejeon · Michigan State University · University of Connecticut · 2024–2025
+            </p>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="profile-section" id="links">
+        <div class="section-heading">
+          <span class="section-label">09 · Contact</span>
+          <h2>Links</h2>
+
+          <p class="section-introduction">
+            Research profile and contact information.
+          </p>
+        </div>
+
+        <div class="profile-links">
+
+          <a
+            class="profile-link"
+            href="../assets/Wonwoo_Kang_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CV ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="https://sites.google.com/view/wonwookang/home"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Website ↗
+          </a>
+
+          <a
+            class="profile-link"
+            href="mailto:wonk@math.bas.bg"
+          >
+            Email ↗
+          </a>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      © 2026 FRAME &nbsp;·&nbsp;
+
+      <a
+        href="https://github.com/Frame-laboratory"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        github.com/Frame-laboratory
+      </a>
+    </p>
+  </footer>
 
 </body>
 </html>
