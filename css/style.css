@@ -572,8 +572,11 @@ section { padding: var(--section-y) var(--section-x); }
   border-color: var(--accent-border);
 }
 
-/* ── About ── */
-#about { background: var(--bg-secondary); border-top: 1px solid var(--border-subtle); }
+/* ── About (homepage band only; profile pages reuse #about without banding) ── */
+section#about:not(.profile-section) {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+}
 .about-content { max-width: var(--content-wide); }
 .about-text {
   font-size: var(--text-base);
